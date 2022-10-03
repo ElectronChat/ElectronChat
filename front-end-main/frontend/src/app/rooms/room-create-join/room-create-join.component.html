@@ -1,0 +1,20 @@
+<div class="iamgeParent">
+  <img class="images" src="../../../assets/imgs/electron.png">
+</div>
+<mat-card>
+  <form (submit)="onJoinCreateRoom(roomForm)" #roomForm="ngForm">
+    <mat-form-field>
+      <input matInput type="text" name="roomCode" ngModel required minLength="3" placeholder="Enter room code" #roomCode ="ngModel">
+      <mat-error *ngIf="roomCode.invalid">Please enter a room code.</mat-error>
+    </mat-form-field>
+    <button
+    mat-raised-button
+    type="submit"
+    routerLink='/room'
+    [disabled]="roomCode.invalid">Join</button>
+  </form>
+</mat-card>
+<button mat-button (click)="scroll(target)" class="scrollButton">
+  <mat-icon>arrow_downward</mat-icon>
+</button>
+<div #target>About Us</div>

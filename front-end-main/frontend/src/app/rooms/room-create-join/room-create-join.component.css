@@ -1,0 +1,28 @@
+mat-form-field,
+textarea {
+  width: 100%;
+}
+
+button {
+  background-color: rgb(120,120,210);
+  color:aliceblue;
+}
+
+
+.images {
+  display: block;
+  margin-top: -4rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.scrollButton {
+  display: block;
+  margin-top: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+  color: antiquewhite;
+  transform: scale(2);
+}
+

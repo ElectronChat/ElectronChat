@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - 4.2
+
+script:
+  - coverage xml -i
+
+after_success:
+  - codecov
+
+addons:
+ sonarcloud:
+   organization: ElectronChat # the key of the org you chose at step #3
+   token:
+     secure: ${newToken}
