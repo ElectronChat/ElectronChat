@@ -6,6 +6,7 @@ name: Node.js CI
 on:
   push:
     paths: 
+      - main
       - 'back-end-main/'
 
 jobs:
