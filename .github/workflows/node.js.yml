@@ -11,7 +11,7 @@ jobs:
   build:
     defaults:
       run:
-        working-directory: back-end-main
+        working-directory: ./back-end-main
 
     runs-on: ubuntu-latest
 
