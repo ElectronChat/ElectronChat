@@ -17,7 +17,7 @@ export class RoomsService {
   socket = io('http://localhost:8080');
 
   public sendMessage(message: any) {
-    this.socket.emit('message', message);
+    this.socket.emit('chat message', message);
   }
 
   public getNewMessage = () => {
