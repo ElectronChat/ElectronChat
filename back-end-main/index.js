@@ -9,7 +9,7 @@ const home = require('./app/routes/main')
 const server = http.createServer(app)
 const io = new Server(server);
 
-// this is our directory where all of our frontend gets built to. 
+// this is our directory where all of our frontend gets built to.
 var distDir = __dirname + "/front/";
 app.use(express.static('../front-end-main/dist'));
 
