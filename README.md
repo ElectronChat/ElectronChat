@@ -12,6 +12,8 @@ Once both Node JS and Python 3 are installed, you can open your terminal in the 
 
 Run the 'python3 setup.py' command.
 
+*NOTE* If you are running this on a Windows device, you will probably run into the error "'ng' is not recognized as an internal or external command, operable program or batch file." You may need to add the Angular CLI to your environment variables. You can follow this tutorial: https://stackoverflow.com/questions/37991556/ng-is-not-recognized-as-an-internal-or-external-command.
+
 After a little while, your project should be all setup and you can navigate to the "back-end-main folder"
 
 Once in the "back-end-main" folder, run 'node index.js'. The server should be up and running.
