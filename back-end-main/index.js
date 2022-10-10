@@ -20,7 +20,7 @@ app.use(express.static('/home/back-end/front'));
 app.use('/', home);
 
 const hostname = '127.0.0.1';
-const port = 80;
+const port = 8080;
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
