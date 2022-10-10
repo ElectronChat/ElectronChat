@@ -13,7 +13,7 @@
     "nyc": "^15.1.0"
   },
   "scripts": {
-    "coverage": "nyc report --reporter=text-lcov > coverage.lcov",
-    "test": "nyc mocha --exit"
+    "test": "nyc mocha --exit",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov"
   }
 }
