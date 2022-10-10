@@ -1,0 +1,15 @@
+Ideas about the method for encryption - Philip Marshall - October 10th 2022
+
+For encryption, we could use symmetric key encryption since it fits our use case very well. 
+Symmetric encryption uses a single key to encrypt and decrypt messages
+so it would work perfectly with out room code being the key.
+
+I have the most experience with AES encryption algorithm which is one of many symmetric encryption algorithms. 
+I would suggest using AES, but there are other good options as well.
+
+A full description of symmetric encryption can be found at: 
+https://www.cryptomathic.com/news-events/blog/symmetric-key-encryption-why-where-and-how-its-used-in-banking
+
+Regardless of what we decide to do, I believe we should implement encryption last 
+since its going to be easy to modify the code to account for it.
+It will also be easier to debug when messages are not encrypted.
