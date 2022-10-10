@@ -32,11 +32,10 @@ jobs:
     - run: npm install
     - run: npm ci
     - run: npm run build --if-present
-    - name: Mocha tests
-      run: npm test
     - name: Coverage On Node ${{ matrix.node-version }}
-      run:
-        npm run coverage
+      run: npm run coverage
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
+    - name: Mocha tests
+      run: npm test
       
