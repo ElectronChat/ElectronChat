@@ -1,12 +1,32 @@
 import { Injectable } from "@angular/core";
-import { Subject } from 'rxjs';
+import { Socket } from "ngx-socket-io";
+import { map } from "rxjs/operators";
 
+import { io } from "socket.io-client";
+import { BehaviorSubject, Subject } from 'rxjs';
 import { RoomCreateJoin } from "./room-create-join.model";
 
 @Injectable({providedIn: 'root'})
 export class RoomsService {
+  public message$: BehaviorSubject<string> = new BehaviorSubject('');
   private rooms: RoomCreateJoin[] = [];
   private roomsUpdated = new Subject<RoomCreateJoin[]>();
+
+  constructor() {}
+
+  socket = io('http://localhost:8080');
+
+  public sendMessage(message: any) {
+    this.socket.emit('chat message', message);
+  }
+
+  public getNewMessage = () => {
+    this.socket.on('message', (message) => {
+      this.message$.next(message);
+    });
+
+    return this.message$.asObservable();
+  };
 
   getRooms() { return [...this.rooms]; }
 
