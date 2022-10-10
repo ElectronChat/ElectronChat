@@ -16,6 +16,8 @@ import { RoomCreateJoinComponent } from './rooms/room-create-join/room-create-jo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { PostListComponent } from './rooms/post-list/post-list.component';
+import { RoomComponent } from './rooms/room/room.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { PostListComponent } from './rooms/post-list/post-list.component';
     ArrayOfComponents,
     RoomCreateJoinComponent,
     HeaderComponent,
-    PostListComponent
+    PostListComponent,
+    RoomComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,7 @@ import { PostListComponent } from './rooms/post-list/post-list.component';
     MatButtonModule,
     MatToolbarModule,
     MatExpansionModule,
-    MatIconModule
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
