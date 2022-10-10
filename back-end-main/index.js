@@ -11,7 +11,7 @@ app1.disable("x-powered-by");
 // we create our app and give it some middleware
 let app = express();
 
-// this is our directory where all of our frontend gets built to. 
+// this is our directory where all of our frontend gets built to.
 var distDir = __dirname + "/front/";
 app.use(express.static('/home/back-end/front'));
 
@@ -19,7 +19,7 @@ app.use(express.static('/home/back-end/front'));
 // the first route is how we will start creating our routes.
 app.use('/', home);
 
-const hostname = '69.48.142.114';
+const hostname = '127.0.0.1';
 const port = 80;
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
