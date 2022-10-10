@@ -19,8 +19,8 @@ app.use(express.static('/home/back-end/front'));
 // the first route is how we will start creating our routes.
 app.use('/', home);
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const hostname = '69.48.142.114';
+const port = 80;
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
