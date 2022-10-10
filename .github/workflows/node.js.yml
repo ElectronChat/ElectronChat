@@ -37,5 +37,5 @@ jobs:
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
       with:
-       root: ./back-end-main
+       root_dir: ./back-end-main
       
