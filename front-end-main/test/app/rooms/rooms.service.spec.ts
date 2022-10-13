@@ -18,6 +18,8 @@ describe('RoomsService', () => {
     expect(comp.getRooms()).toEqual([]);
     comp.createRoom("ABC");
     expect(comp.getRooms()[0].roomCode).toEqual("ABC");
+    comp.createRoom("DEF");
+    expect(comp.getRooms()[0].roomCode).toEqual("DEF");
 
   });
 

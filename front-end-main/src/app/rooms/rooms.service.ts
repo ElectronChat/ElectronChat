@@ -21,7 +21,7 @@ export class RoomsService {
   }
 
   public getNewMessage = () => {
-    this.socket.on('message', (message) => {
+    this.socket.on('chat message', (message) => {
       this.message$.next(message);
     });
 
