@@ -20,7 +20,7 @@ app.use('/', home);
 
 HandleIO(io);
 
-const hostname = '69.48.142.114';
+const hostname = 'localhost';
 const port = 8080;
 server.listen(port, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
@@ -37,6 +37,7 @@ function HandleIO(io)
     console.log('a user connected');
     socket.on('chat message', (msg) => {
       console.log('message: ' + msg);
+      socket.emit('chat message',(msg));
     });
   });
 }

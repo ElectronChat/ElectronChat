@@ -4,7 +4,7 @@
   </li>
 </div>
 
-<mat-card>
+<mat-card class = "Inputbox">
   <form (submit)="sendMessage(roomForm)" #roomForm="ngForm">
     <mat-form-field>
       <input matInput type="text" name="new_message" ngModel required minLength="3" placeholder="Enter message" #new_message ="ngModel">
@@ -16,3 +16,5 @@
     [disabled]="new_message.invalid">Send</button>
   </form>
 </mat-card>
+
+
