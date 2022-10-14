@@ -10,8 +10,6 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./room.component.css']
 })
 export class RoomComponent implements OnInit, OnDestroy {
-
-  newMessage: string = "";
   messageList: string[] = [];
 
   // posts: RoomCreateJoin[] = [];

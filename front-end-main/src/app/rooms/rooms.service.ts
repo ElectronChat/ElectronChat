@@ -16,12 +16,13 @@ export class RoomsService {
 
   socket = io('http://localhost:8080');
 
+
   public sendMessage(message: any) {
     this.socket.emit('chat message', message);
   }
 
   public getNewMessage = () => {
-    this.socket.on('message', (message) => {
+    this.socket.on('chat message', (message) => {
       this.message$.next(message);
     });
 
@@ -31,7 +32,6 @@ export class RoomsService {
   getRooms() { return [...this.rooms]; }
 
   getRoomUpdateListener() {
-
     return this.roomsUpdated.asObservable();
   }
 

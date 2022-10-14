@@ -12,7 +12,7 @@ const HandleIo = require("./app/Models/HandleIo.cjs");
 const server = http.createServer(app)
 const io = new Server(server);
 
-// this is our directory where all of our frontend gets built to. 
+// this is our directory where all of our frontend gets built to.
 var distDir = __dirname + "/front/";
 app.use(express.static('../front-end-main/dist'));
 
@@ -24,7 +24,7 @@ app.use('/', home);
 // socket.io handler
 var handler = new HandleIo(io)
 
-const hostname = '69.48.142.114';
+const hostname = 'localhost';
 const port = 8080;
 server.listen(port, () => {
   console.log(`Server running at http://${hostname}:${port}/`);

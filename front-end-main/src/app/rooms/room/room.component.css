@@ -1,0 +1,17 @@
+.Inputbox{
+  position: absolute;
+  top: 450px;
+}
+
+
+mat-form-field,
+textarea {
+  width: 100%;
+}
+
+
+
+button {
+  background-color: rgb(120,120,210);
+  color:aliceblue;
+}

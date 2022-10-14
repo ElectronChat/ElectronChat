@@ -9,12 +9,14 @@ import { RoomsService } from '../rooms.service';
 })
 export class RoomCreateJoinComponent {
   enteredRoom = "";
+  roomIndex = 0;
 
   constructor(public roomsService: RoomsService) {}
 
   onJoinCreateRoom(form: NgForm) {
     if (form.invalid) { return; }
     this.roomsService.createRoom(form.value.roomCode);
+    this.roomIndex = this.roomsService.getRooms().length - 1;
     form.resetForm();
   }
 
