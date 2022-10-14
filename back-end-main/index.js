@@ -2,6 +2,7 @@ let express = require( 'express' );
 let http = require('http');
 let app = express();
 let app1 = express();
+require('dotenv').config();
 const { Server } = require("socket.io");
 app1.disable("x-powered-by");
 // we need to include any of our created routes so it will be 'linked'
@@ -20,9 +21,9 @@ app.use('/', home);
 
 HandleIO(io);
 
-const hostname = 'localhost';
-const port = 8080;
-server.listen(port, () => {
+const hostname = process.env.host;
+const port = process.env.PORT;
+server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
 //test function for mocha test
