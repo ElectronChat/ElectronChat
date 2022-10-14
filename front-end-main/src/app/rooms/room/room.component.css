@@ -1,6 +1,6 @@
 .Inputbox{
-  position: absolute;
-  top: 450px;
+  position: relative;
+  top: 2rem;
 }
 
 
@@ -9,9 +9,33 @@ textarea {
   width: 100%;
 }
 
+/* cdk-virtual-scroll-viewport,
+textarea {
+  background-color: aliceblue;
 
+} */
+
+.notInvisible {
+  color:black;
+}
+
+.cdk-scroll {
+  background-color: transparent;
+}
 
 button {
   background-color: rgb(120,120,210);
   color:aliceblue;
+}
+
+
+.example-viewport {
+  height: 600px;
+  width: 100%;
+  border: 4px solid rgb(150, 150, 240);
+  background-color: rgb(200,200,290);
+}
+
+.example-item {
+  height: 50px;
 }

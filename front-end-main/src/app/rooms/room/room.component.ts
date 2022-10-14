@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./room.component.css']
 })
 export class RoomComponent implements OnInit, OnDestroy {
-  messageList: string[] = [];
+  messageList: string[] = ["This"];
 
   // posts: RoomCreateJoin[] = [];
   // private postsSub: Subscription = new Subscription;
@@ -19,7 +19,8 @@ export class RoomComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.roomsService.getNewMessage().subscribe((message: string) => {
-      this.messageList.push(message);
+      // this.messageList.push(message);
+      this.messageList = [...this.messageList, message];
     })
     // this.posts = this.roomsService.getRooms();
     // this.postsSub = this.roomsService.getRoomUpdateListener().subscribe((posts: RoomCreateJoin[]) => {
