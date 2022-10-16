@@ -26,7 +26,7 @@ app.use('/', home);
 var handler = new HandleIo(io)
 
 const hostname = process.env.host;
-const port = parsInt(process.env.PORT);
+const port = parseInt(process.env.port);
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
