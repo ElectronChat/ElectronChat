@@ -4,8 +4,11 @@ let app = express();
 let app1 = express();
 const { Server } = require("socket.io");
 app1.disable("x-powered-by");
+
+
 // we need to include any of our created routes so it will be 'linked'
-const home = require('./app/routes/main')
+const home = require('./app/routes/main');
+const HandleIo = require("./app/Models/HandleIo.cjs");
 const server = http.createServer(app)
 const io = new Server(server);
 
@@ -18,7 +21,8 @@ app.use(express.static('../front-end-main/dist'));
 // the first route is how we will start creating our routes.
 app.use('/', home);
 
-HandleIO(io);
+// socket.io handler
+var handler = new HandleIo(io)
 
 const hostname = 'localhost';
 const port = 8080;
@@ -28,16 +32,4 @@ server.listen(port, () => {
 //test function for mocha test
 module.exports = function() {
   return 'hello';
-}
-
-
-function HandleIO(io)
-{
-  io.on('connection', (socket) => {
-    console.log('a user connected');
-    socket.on('chat message', (msg) => {
-      console.log('message: ' + msg);
-      socket.emit('chat message',(msg));
-    });
-  });
 }
