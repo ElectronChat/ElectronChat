@@ -15,7 +15,7 @@ export class RoomsService {
 
   constructor() {}
 
-  socket = io('http://localhost:8080');
+  socket = io('http://localhost:3000');
 
 
   public sendMessage(message: any) {
