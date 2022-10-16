@@ -2,6 +2,7 @@
   "name": "ElectronChat",
   "Description": "E2EE chat service",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "should": "^13.2.3",
     "socket.io": "^4.5.2",

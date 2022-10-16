@@ -2,6 +2,7 @@ let express = require( 'express' );
 let http = require('http');
 let app = express();
 let app1 = express();
+require('dotenv').config();
 const { Server } = require("socket.io");
 app1.disable("x-powered-by");
 
@@ -24,9 +25,9 @@ app.use('/', home);
 // socket.io handler
 var handler = new HandleIo(io)
 
-const hostname = 'localhost';
-const port = 8080;
-server.listen(port, () => {
+const hostname = process.env.host;
+const port = process.env.PORT;
+server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
 //test function for mocha test
