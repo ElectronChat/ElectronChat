@@ -10,18 +10,32 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./room.component.css']
 })
 export class RoomComponent implements OnInit, OnDestroy {
-  messageList: string[] = ["This"];
+  messageList: string[] = [];
 
   // posts: RoomCreateJoin[] = [];
-  // private postsSub: Subscription = new Subscription;
+  private roomServ: Subscription = new Subscription;
 
   constructor(public roomsService: RoomsService) {}
 
   ngOnInit() {
-    this.roomsService.getNewMessage().subscribe((message: string) => {
-      // this.messageList.push(message);
-      this.messageList = [...this.messageList, message];
-    })
+    this.roomServ = this.roomsService.getNewMessage().subscribe((message: string) => {
+      //this.messageList.push(message);
+     this.messageList = [...this.messageList, message];
+     console.log("new iteration")
+     this.messageList.forEach(elem => {
+       console.log(elem)
+     });
+     console.log("end of it");
+   });
+    // this.roomServ.subscribe((message: string) => {
+    //    //this.messageList.push(message);
+    //   this.messageList = [...this.messageList, message];
+    //   console.log("new iteration")
+    //   this.messageList.forEach(elem => {
+    //     console.log(elem)
+    //   });
+    //   console.log("end of it");
+    // });
     // this.posts = this.roomsService.getRooms();
     // this.postsSub = this.roomsService.getRoomUpdateListener().subscribe((posts: RoomCreateJoin[]) => {
     //   this.posts = posts;
@@ -36,5 +50,8 @@ export class RoomComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     // this.postsSub.unsubscribe();
+    this.roomServ.unsubscribe();
+    //this.roomsService.socket.removeAllListeners('chat message');
+    this.messageList = [];
   }
 }
