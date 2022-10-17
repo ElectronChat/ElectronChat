@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { RoomCreateJoin } from '../room-create-join.model';
 import { RoomsService } from '../rooms.service';
 import { NgForm } from '@angular/forms';
+import { formatCurrency } from '@angular/common';
 
 @Component ( {
   selector: 'app-room',
@@ -51,7 +52,7 @@ export class RoomComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     // this.postsSub.unsubscribe();
     this.roomServ.unsubscribe();
-    //this.roomsService.socket.removeAllListeners('chat message');
-    this.messageList = [];
+    this.roomsService.socket.removeAllListeners('chat message');
+    location.reload();
   }
 }
