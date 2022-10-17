@@ -1,10 +1,11 @@
-<div *ngFor="let message of messageList">
-  <li>
-      {{message}}
-  </li>
-</div>
+<cdk-virtual-scroll-viewport [itemSize]="50" class="example-viewport">
+  <div *cdkVirtualFor="let message of messageList" class="example-item">
+    <div>{{message}}</div>
+    <mat-divider></mat-divider>
+  </div>
+</cdk-virtual-scroll-viewport>
 
-<mat-card>
+<mat-card class = "Inputbox">
   <form (submit)="sendMessage(roomForm)" #roomForm="ngForm">
     <mat-form-field>
       <input matInput type="text" name="new_message" ngModel required minLength="3" placeholder="Enter message" #new_message ="ngModel">
@@ -16,3 +17,5 @@
     [disabled]="new_message.invalid">Send</button>
   </form>
 </mat-card>
+
+
