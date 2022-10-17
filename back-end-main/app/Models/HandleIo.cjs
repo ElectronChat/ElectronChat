@@ -17,7 +17,7 @@ module.exports = class HandleIo{
     {
         this.mSocket.on( "chat message", (msg) => {
                   console.log(this.MessageRecieved(msg));
-                  this.mSocket.emit("chat message", this.MessageRecieved(msg));
+                  this.mIo.emit("chat message", this.MessageRecieved(msg));
                 });
         this.mSocket.on("room created", (id)=>{
             console.log(this.CreateRoom(id));
