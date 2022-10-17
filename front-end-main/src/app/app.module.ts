@@ -15,7 +15,6 @@ import { AppComponent } from './app.component';
 import { RoomCreateJoinComponent } from './rooms/room-create-join/room-create-join.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
-import { PostListComponent } from './rooms/post-list/post-list.component';
 import { RoomComponent } from './rooms/room/room.component';
 
 
@@ -25,7 +24,6 @@ import { RoomComponent } from './rooms/room/room.component';
     ArrayOfComponents,
     RoomCreateJoinComponent,
     HeaderComponent,
-    PostListComponent,
     RoomComponent
   ],
   imports: [
