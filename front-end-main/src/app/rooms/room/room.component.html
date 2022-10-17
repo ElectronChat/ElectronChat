@@ -1,8 +1,9 @@
-<div *ngFor="let message of messageList">
-  <li>
-      {{message}}
-  </li>
-</div>
+<cdk-virtual-scroll-viewport [itemSize]="50" class="example-viewport">
+  <div *cdkVirtualFor="let message of messageList" class="example-item">
+    <div>{{message}}</div>
+    <mat-divider></mat-divider>
+  </div>
+</cdk-virtual-scroll-viewport>
 
 <mat-card class = "Inputbox">
   <form (submit)="sendMessage(roomForm)" #roomForm="ngForm">

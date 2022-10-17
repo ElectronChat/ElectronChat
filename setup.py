@@ -13,11 +13,11 @@ if u == "y":
 else:
     ip = input("what is your remote ip?: ")
     port = input( "what is your port your server will listen to?" )
-    File = open("./back-end-main/.env")
-    File.write("host=" + ip + "\nport=" + port, "w" ) 
+    File = open("./back-end-main/.env", "w")
+    File.write("host=" + ip + "\nport=" + port) 
     File.close()
-    File = open("./front-end-main/.env")
-    File.write("host=" + ip + "\nport=" + port, "w" )
+    File = open("./front-end-main/.env", "w")
+    File.write("host=" + ip + "\nport=" + port)
     File.close()
     os.environ["host"] = ip
     os.environ["port"] = port
