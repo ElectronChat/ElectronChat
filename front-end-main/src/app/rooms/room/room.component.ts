@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { RoomsService } from '../rooms.service';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from "@angular/router";
 
 @Component ( {
   selector: 'app-room',
@@ -13,12 +14,20 @@ export class RoomComponent implements OnInit, OnDestroy {
 
   // posts: RoomCreateJoin[] = [];
   private roomServ: Subscription = new Subscription;
+  private roomCode: string = "";
 
-  constructor(public roomsService: RoomsService) {}
+  constructor(public roomsService: RoomsService, private route: ActivatedRoute) {}
 
   // Constructor for component. Subscribes to io for messages. When new message is acquired,
   // will append to current list
   ngOnInit() {
+    this.route.params.subscribe(params=>{
+      this.roomCode = params['id'];
+  })
+  
+    this.roomsService.setRoom(this.roomCode);
+    this.roomsService.setupSocket();
+
     this.roomServ = this.roomsService.getNewMessage().subscribe((message: string) => {
       //this.messageList.push(message);
      this.messageList = [...this.messageList, message];
