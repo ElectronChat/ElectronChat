@@ -6,8 +6,9 @@ module.exports = class HandleIo{
     {
         this.mIo = io;
         this.mIo.on('connection', (socket) => {
+            socket.join(socket.handshake.query.roomCode);
+            console.log(socket.handshake.query.roomCode);
             this.mSocket = socket;
-            console.log(this.UserJoin("a user"));
             this.listen();
           });
         this.list = [];
@@ -17,7 +18,7 @@ module.exports = class HandleIo{
     {
         this.mSocket.on( "chat message", (msg) => {
                   console.log(this.MessageRecieved(msg));
-                  this.mSocket.emit("chat message", this.MessageRecieved(msg));
+                  this.mIo.in(this.mSocket.handshake.query.roomCode).emit("chat message", this.MessageRecieved(msg));
                 });
         this.mSocket.on("room created", (id)=>{
             console.log(this.CreateRoom(id));

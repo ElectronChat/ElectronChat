@@ -10,20 +10,32 @@ import { RoomCreateJoin } from "./room-create-join.model";
 export class RoomsService {
   public message$: BehaviorSubject<string> = new BehaviorSubject('');
   public newMessage = "";
+  public roomcode = "";
   private rooms: RoomCreateJoin[] = [];
   private roomsUpdated = new Subject<RoomCreateJoin[]>();
+  public socket: any;
+  constructor() {
+    
+  }
 
-  constructor() {}
 
-  socket = io('http://localhost:3000');
 
+  public setupSocket()
+  {
+    this.socket = io('http://localhost:3000',
+    {query: {roomCode: this.roomcode}});
+  }
+
+  public setRoom(room: string){
+    this.roomcode = room;
+  }
 
   public sendMessage(message: any) {
     this.socket.emit('chat message', message);
   }
 
   public getNewMessage = () => {
-    this.socket.on('chat message', (message) => {
+    this.socket.on('chat message', (message:any) => {
       this.message$.next(message);
 
       this.newMessage = message;
