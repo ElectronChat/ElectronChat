@@ -3,7 +3,7 @@ const express = require('express');
 const {server} = require('socket.io');
 
 const HandleIo = require('../app/Models/HandleIo');
-const IoNotification = require("./IoNotification.cjs");
+const IoNotification = require('../app/Models/IoNotification');
 
 describe('HandleIo', function(){
   const app = express();
