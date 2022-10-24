@@ -11,13 +11,13 @@ describe('HandleIo', function(){
   const io = new Server(server);
   const handler = new HandleIo(io);
 
-  describe('listen' function(){
+  describe('listen', function(){
     it('listen should', function(){
 
     })
   })
 
-  describe('CreateRoom' function(){
+  describe('CreateRoom', function(){
     it('CreateRoom should return "roomID : Room Created!"', function(){
         testId = 123;
         return_var = HandleIo.notify(new IoNotification("CREATEROOM", testId));
@@ -26,7 +26,7 @@ describe('HandleIo', function(){
     })
   })
 
-  describe('UserJoin' function(){
+  describe('UserJoin', function(){
     it('UserJoin should return "user Joined the room!"', function(){
         user = "Joe";
         return_var = HandleIo.notify(new IoNotification("USERJOIN", user))
@@ -35,7 +35,7 @@ describe('HandleIo', function(){
     })
   })
 
-  describe('MessageRecieved' function(){
+  describe('MessageRecieved', function(){
     it('MessageRecieved should return "Message: {userMessage}"', function(){
         message = "test message"
         return_var = HandleIo.notify(new IoNotification("NEWMESSAGE", message))
@@ -45,7 +45,7 @@ describe('HandleIo', function(){
   })
 
   // Testing error, GetMessage should return "error"
-  describe('notify' function(){
+  describe('notify', function(){
     it('notify should return requested Handle, this case error', function(){
         notification = HandleIo.notify(new IoNotification("ERROR", "test"))
         return_var = notification.GetMessage();
