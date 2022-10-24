@@ -2,7 +2,7 @@ name: Angular GitHub CI
 
 on:
   push:
-    branches: [ "main", "Dev" ]
+    branches: [ "main", "Dev", "front-end-test-CI" ]
 
 defaults:
   run:
