@@ -19,6 +19,13 @@ jobs:
 
     steps:
     - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        working-directory: './front-end-main'
+        node-version: ${{ matrix.node-version }}
+    - name: Install Node
       run: npm install
     - name: Intall CI
       run: npm install
