@@ -25,12 +25,7 @@ jobs:
       with:
         working-directory: 'front-end-main'
         node-version: ${{ matrix.node-version }}
-    - name: Install Node
-      run: npm install
-    - name: Intall CI
-      run: npm install
-    - name: Run Build
-      run: npm run build --if-present
-    - name: Angular Tests
-      working-directory: 'front-end-main'
-      run: ng test
+    - run: npm install
+    - run: npm install
+    - run: npm run build --if-present
+    - run: ng test
