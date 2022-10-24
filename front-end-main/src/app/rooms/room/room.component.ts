@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { RoomsService } from '../rooms.service';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from "@angular/router";
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Component ( {
   selector: 'app-room',
@@ -10,6 +11,7 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ['./room.component.css']
 })
 export class RoomComponent implements OnInit, OnDestroy {
+  @ViewChild(CdkVirtualScrollViewport) public virtualScrollViewport?: CdkVirtualScrollViewport;
   messageList: string[] = [];
 
   // posts: RoomCreateJoin[] = [];
@@ -24,13 +26,17 @@ export class RoomComponent implements OnInit, OnDestroy {
     this.route.params.subscribe(params=>{
       this.roomCode = params['id'];
   })
-  
+
     this.roomsService.setRoom(this.roomCode);
     this.roomsService.setupSocket();
 
     this.roomServ = this.roomsService.getNewMessage().subscribe((message: string) => {
       //this.messageList.push(message);
      this.messageList = [...this.messageList, message];
+     if (this.messageList.length > 0) {
+
+      this.virtualScrollViewport?.scrollToIndex(this.messageList.length);
+    }
    });
     // this.roomServ.subscribe((message: string) => {
     //    //this.messageList.push(message);
