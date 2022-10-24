@@ -5,7 +5,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main", "Dev", "front-end-test-CI" ]
+    branches: [ "main", "Dev" ]
     
 defaults:
   run:
@@ -33,7 +33,4 @@ jobs:
     - run: npm run build --if-present
     - name: Mocha tests
       run: npm test
-    - name: Front End Test
-      working-directory: './front-end-main'
-      run: npm install -g @angular/cli
       
