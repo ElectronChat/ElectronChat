@@ -31,4 +31,4 @@ jobs:
     - name: Angular Tests
       with:
         working-directory: './front-end-main'
-    - run: ng test
+        run: ng test
