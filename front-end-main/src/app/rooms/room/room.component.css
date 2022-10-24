@@ -1,12 +1,19 @@
 .Inputbox{
   position: relative;
   top: 2rem;
+  bottom:4rem;
+  background-color: rgba(210, 210, 255);
+  font-size: 1rem;
 }
 
+.row {
+  left: 5%;
+  color: black;
+}
 
 mat-form-field,
 textarea {
-  width: 100%;
+  width: 75%;
 }
 
 /* cdk-virtual-scroll-viewport,
@@ -24,7 +31,12 @@ textarea {
 }
 
 button {
-  background-color: rgb(120,120,210);
+  background-color: rgb(180,180,270);
+  color:aliceblue;
+}
+
+button:disabled {
+  background-color: rgb(10,120,210);
   color:aliceblue;
 }
 
@@ -32,10 +44,51 @@ button {
 .example-viewport {
   height: 600px;
   width: 100%;
-  border: 4px solid rgb(150, 150, 240);
-  background-color: rgb(200,200,290);
+  border: 5px solid rgb(150, 150, 240);
+  border-radius: 10px;
+  background-color: rgb(180,180,270);
 }
 
-.example-item {
-  height: 50px;
+.message_span {
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+  max-height: none;
+  border:5px solid rgb(100, 100, 190);
+  background-color: rgb(100,100,190);
+  color: rgb(224, 224, 255);
+  font-family: 'Times New Roman', Times, serif;
+  max-inline-size: 500px;
+  overflow-wrap: break-word;
+  border-radius: 20px;
+}
+
+.message {
+  margin-left: 5px;
+  margin-top: 2rem;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 15%;
+  width: 100%;
+  background-color: rgb(90 , 90, 160);
+  color: white;
+  text-align: left;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: black !important;
+ }
+
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: transparent !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: transparent !important;
 }
