@@ -6,8 +6,8 @@ on:
 
 defaults:
   run:
-    working-directory: ./front-end-main
-
+    working-directory: ./back-end-main
+    
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,15 +18,12 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        working-directory: './front-end-main'
-        node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm ci
-    - run: npm run build --if-present
+      run: npm install
+    - name: Intall CI
+      run: npm install
+    - name: Run Build
+      run: npm run build --if-present
     - name: Angular Tests
       working-directory: './front-end-main'
       run: ng test
