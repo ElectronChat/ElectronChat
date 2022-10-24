@@ -6,7 +6,7 @@ on:
 
 defaults:
   run:
-    working-directory: ./back-end-main
+    working-directory: './front-end-main'
     
 jobs:
   build:
