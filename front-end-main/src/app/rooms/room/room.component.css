@@ -46,7 +46,7 @@ button:disabled {
   height: 600px;
   width: 100%;
   border: 5px solid rgb(150, 150, 240);
-  border-radius: 10px;
+  border-radius: 0px;
   background-color: rgb(180,180,270);
 }
 

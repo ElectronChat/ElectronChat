@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule }  from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
-import { MatList, MatListModule } from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 import { ScrollingModule } from '@angular/cdk/scrolling'
 
 import { AppRoutingModule, ArrayOfComponents } from './app-routing.module';
@@ -18,6 +18,7 @@ import { RoomCreateJoinComponent } from './rooms/room-create-join/room-create-jo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { RoomComponent } from './rooms/room/room.component';
+import { MessageComponent } from './rooms/room/message/message.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { RoomComponent } from './rooms/room/room.component';
     ArrayOfComponents,
     RoomCreateJoinComponent,
     HeaderComponent,
-    RoomComponent
+    RoomComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

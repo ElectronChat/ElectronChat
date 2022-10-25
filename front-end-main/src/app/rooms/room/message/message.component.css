@@ -1,0 +1,12 @@
+.msg {
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+  max-height: none;
+  border:5px solid rgb(100, 100, 190);
+  background-color: rgb(100,100,190);
+  color: rgb(224, 224, 255);
+  font-family: 'Times New Roman', Times, serif;
+  max-inline-size: 500px;
+  overflow-wrap: break-word;
+  border-radius: 20px;
+}

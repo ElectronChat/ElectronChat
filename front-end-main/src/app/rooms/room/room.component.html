@@ -1,10 +1,10 @@
+
 <cdk-virtual-scroll-viewport [itemSize]="50" class="example-viewport">
   <div #virtualScroll *cdkVirtualFor="let message of messageList" class="message">
-    <div *ngIf="message != ''" class="message_span">{{message}}</div>
+    <message [messageText]="message"></message>
     <!-- <mat-divider></mat-divider> -->
   </div>
 </cdk-virtual-scroll-viewport>
-
 
 <div class="footer">
   <mat-card class = "Inputbox">
