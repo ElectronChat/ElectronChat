@@ -4,6 +4,7 @@ import { RoomsService } from '../rooms.service';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from "@angular/router";
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { MessageComponent } from './message/message.component';
 
 @Component ( {
   selector: 'app-room',
@@ -13,6 +14,7 @@ import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 export class RoomComponent implements OnInit, OnDestroy {
   @ViewChild(CdkVirtualScrollViewport) public virtualScrollViewport?: CdkVirtualScrollViewport;
   messageList: string[] = [];
+  //messageList: string[] = ["Random","Random", "James","Random","Random", "James","Phil","Phil","Random","Random", "James","Phil","Hello","Frgughugehgueugeugrehgurehgeughreughreughreugrheugrehgurehgruehgreughreughreugrehugrehgruehgreughreugrehgurehgreugrehgurehgreugrheugehugr"];
 
   // posts: RoomCreateJoin[] = [];
   private roomServ: Subscription = new Subscription;
