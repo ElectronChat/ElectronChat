@@ -2,6 +2,7 @@ const { notify } = require("../routes/main");
 const IoNotification = require("./IoNotification.cjs");
 const NameGenerator = require("./NameGenerator")
 let gen = new NameGenerator();
+const message = require("./Message");
 
 module.exports = class HandleIo{
     constructor(io)
@@ -11,8 +12,8 @@ module.exports = class HandleIo{
         this.mIo.on('connection', async (socket) => {
             this.user = await gen.generateName();
             socket.join(socket.handshake.query.roomCode);
-            this.mIo.in(this.mSocket.handshake.query.roomCode).emit("user_join", this.user);
             this.mSocket = socket;
+            this.mIo.in(this.mSocket.handshake.query.roomCode).emit("user_join", this.user);
             this.listen();
           });
         this.list = [];
@@ -21,8 +22,7 @@ module.exports = class HandleIo{
     listen()
     {
         this.mSocket.on( "chat message", (msg) => {
-                  console.log(this.MessageRecieved(msg));
-                  this.mIo.in(this.mSocket.handshake.query.roomCode).emit("chat message", "" + this.user + ": " + this.MessageRecieved(msg));
+                  this.mIo.in(this.mSocket.handshake.query.roomCode).emit("chat message", new message(this.user, this.MessageRecieved(msg)));
                 });
         this.mSocket.on("room created", (id)=>{
             console.log(this.CreateRoom(id));
