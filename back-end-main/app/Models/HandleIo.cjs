@@ -22,7 +22,7 @@ module.exports = class HandleIo{
                 });
         this.mSocket.on("room created", (id)=>{
             console.log(this.CreateRoom(id));
-        });git 
+        });
     }
 
     CreateRoom (id)
