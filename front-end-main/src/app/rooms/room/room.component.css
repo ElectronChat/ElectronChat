@@ -1,35 +1,20 @@
-.Inputbox{
-  position: fixed;
-  bottom:0;
-  height :8%;
+html, body{
+  margin: 0%;
+  padding: 0%;
   width: 100%;
-  background-color: rgba(210, 210, 255);
-  font-size: 1rem;
+  height: 100%;
 }
 
-.row {
-  left: 5%;
-  color: black;
+.viewportWrapper {
+  width:100%;
+  height: 70vh;
+  top:0px;
 }
 
-mat-form-field,
-textarea {
-  width: 75%;
+mat-form-field {
+  width: 90%;
 }
 
-/* cdk-virtual-scroll-viewport,
-textarea {
-  background-color: aliceblue;
-
-} */
-
-.notInvisible {
-  color:black;
-}
-
-.cdk-scroll {
-  background-color: transparent;
-}
 
 button {
   background-color: rgb(180,180,270);
@@ -40,43 +25,20 @@ button:disabled {
   background-color: rgb(10,120,210);
   color:aliceblue;
 }
-
-
-.example-viewport {
-  height: 600px;
+.cdkViewport {
+  height: 100%;
   width: 100%;
   border: 5px solid rgb(150, 150, 240);
   border-radius: 0px;
   background-color: rgb(180,180,270);
 }
 
-.message_span {
-  margin-left: 2rem;
-  margin-bottom: 2rem;
-  max-height: none;
-  border:5px solid rgb(100, 100, 190);
-  background-color: rgb(100,100,190);
-  color: rgb(224, 224, 255);
-  font-family: 'Times New Roman', Times, serif;
-  max-inline-size: 500px;
-  overflow-wrap: break-word;
-  border-radius: 20px;
-}
-
-.message {
-  margin-left: 5px;
-  margin-top: 2rem;
-}
-
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  height: 10%;
+.input{
+  margin-top: 1rem;
   width: 100%;
-  background-color: rgb(90 , 90, 160);
-  color: white;
-  text-align: left;
+  border: 5px solid rgb(150, 150, 240);
+  border-radius: 0px;
+  background-color: rgb(180,180,270);
 }
 
 ::ng-deep .mat-focused .mat-form-field-label {

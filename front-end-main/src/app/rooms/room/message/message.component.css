@@ -1,12 +1,19 @@
-.msg {
-  margin-left: 2rem;
-  margin-bottom: 2rem;
+.msg-span {
+  display: inline-flex;
+  padding-left: 5px;
   max-height: none;
+  font-family: 'Times New Roman';
   border:5px solid rgb(100, 100, 190);
   background-color: rgb(100,100,190);
   color: rgb(224, 224, 255);
-  font-family: 'Times New Roman', Times, serif;
-  max-inline-size: 500px;
-  overflow-wrap: break-word;
-  border-radius: 20px;
+  border-radius: 5px;
+}
+
+.msg
+{
+  margin-top: 2rem;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+  max-inline-size: 40%;
+  overflow-wrap: anywhere;
 }
