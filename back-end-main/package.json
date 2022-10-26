@@ -4,6 +4,7 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
+    "isomorphic-fetch": "^3.0.0",
     "should": "^13.2.3",
     "socket.io": "^4.5.2",
     "supertest": "^6.2.4"

@@ -4,8 +4,12 @@ let app = express();
 let app1 = express();
 require('dotenv').config();
 const { Server } = require("socket.io");
+const NameGenerator = require("./app/Models/NameGenerator")
 app1.disable("x-powered-by");
+let gen = new NameGenerator();
+require('isomorphic-fetch');
 
+gen.generateName().then(console.log);
 // we need to include any of our created routes so it will be 'linked'
 const home = require('./app/routes/main');
 const HandleIo = require("./app/Models/HandleIo.cjs");
