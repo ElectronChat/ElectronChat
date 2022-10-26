@@ -1,23 +1,23 @@
+
 class DbConnector{
-    constructor(port,ip)
+    constructor(inter)
     {
-        this.port = port;
-        this.IP = ip;
+        this.mInterface = inter;
     }
     getPort()
     {
-        return this.port;
+        return this.mInterface.getPort();
     }
 
     getIp()
     {
-        return this.IP;
+        return this.mInterface.getip();
     }
 
     getAllMsgs(roomID)
     {
-        // sql stuff
-        return null;
+        return this.mInterface.getAllQueries(roomID);
+
     }
 
     getMsg(msgID)
@@ -27,12 +27,12 @@ class DbConnector{
 
     sendMsg(msg)
     {
-        return null;
+        this.mInterface.submitQuery(msg, "hello_world", "James");
     }
 
     deleteMsg(msg)
     {
-        return null;
+        this.mInterface.deleteQuery(msg);
     }
 }
 // exports class DbConnector to be used by other .js files 
