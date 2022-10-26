@@ -6,7 +6,6 @@ require('dotenv').config();
 const { Server } = require("socket.io");
 app1.disable("x-powered-by");
 
-
 // we need to include any of our created routes so it will be 'linked'
 const home = require('./app/routes/main');
 const HandleIo = require("./app/Models/HandleIo.cjs");

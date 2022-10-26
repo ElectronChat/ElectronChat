@@ -20,7 +20,7 @@ describe('DbConnector', function() {
 
     describe("getAllMsgs", function() {
       it('getALLMsgs should return true', function(){
-        assert.equal(connector.getAllMsgs(), true);
+        assert.equal(connector.getAllMsgs("Hello_world"), true);
       })
     })
 
