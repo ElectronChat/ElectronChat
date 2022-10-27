@@ -1,14 +1,21 @@
 const { notify } = require("../routes/main");
 const IoNotification = require("./IoNotification.cjs");
+const NameGenerator = require("./NameGenerator")
+let gen = new NameGenerator();
+const message = require("./Message");
 
 module.exports = class HandleIo{
     constructor(io)
     {
         this.mIo = io;
-        this.mIo.on('connection', (socket) => {
+        this.usernames = {};
+        this.mIo.on('connection', async (socket) => {
+            this.usernames[socket.id] = await gen.generateName();
+            console.log(this.usernames);
             socket.join(socket.handshake.query.roomCode);
-            console.log(socket.handshake.query.roomCode);
             this.mSocket = socket;
+            console.log(this.mSocket.id);
+            this.mIo.in(this.mSocket.handshake.query.roomCode).emit("user_join", this.usernames[socket.id]);
             this.listen();
           });
         this.list = [];
@@ -17,12 +24,17 @@ module.exports = class HandleIo{
     listen()
     {
         this.mSocket.on( "chat message", (msg) => {
-                  console.log(this.MessageRecieved(msg));
-                  this.mIo.in(this.mSocket.handshake.query.roomCode).emit("chat message", this.MessageRecieved(msg));
+                console.log(this.mSocket.user + ": " + msg);
+                  this.mIo.in(this.mSocket.handshake.query.roomCode).emit("chat message", new message(this.usernames[this.mSocket.id], this.MessageRecieved(msg)));
+                    console.log(this.mSocket.id);
                 });
         this.mSocket.on("room created", (id)=>{
             console.log(this.CreateRoom(id));
         });
+
+        this.mIo.on('disconnect', (socket) => {
+            this.mIo.in(this.mSocket.handshake.query.roomCode).emit("user_disconnect", this.usernames[this.mSocket.id]);
+          });
     }
 
     CreateRoom (id)
