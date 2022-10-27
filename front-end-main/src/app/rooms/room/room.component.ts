@@ -6,7 +6,6 @@ import { ActivatedRoute } from "@angular/router";
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { MessageComponent } from './message/message.component';
 import { NavigationStart, Router } from '@angular/router'
-import { browserRefresh } from '.../app/app.component';
 
 
 @Component ( {
@@ -33,8 +32,6 @@ export class RoomComponent implements OnInit, OnDestroy {
       this.roomCode = params['id'];
   })
 
-  let browserRefresh = browserRefresh;
-  console.log('refreshed?:', BrowserRefresh);
 
     this.roomsService.setRoom(this.roomCode);
     this.roomsService.setupSocket();
@@ -80,9 +77,6 @@ export class RoomComponent implements OnInit, OnDestroy {
   }
 
   canExit() {
-    if (browserRefresh){
-      return confirm('Leaving the Room with delete all messages. Are you sure?')
-    }
     return confirm('Leaving the Room with delete all messages. Are you sure?')
   }
 }
