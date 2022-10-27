@@ -1,51 +1,23 @@
+const { uniqueNamesGenerator, adjectives, colors, animals } = require('unique-names-generator');
 
-require('isomorphic-fetch');
 class NameGenerator
 {
 
-    async fetchData(url) {
+
+    async generateName() {
         try {
-            console.log(url);
-            const response = await fetch(url).then(function(response){
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
+            const randoName = await Promise.all([uniqueNamesGenerator({
+                dictionaries: [adjectives, colors, animals],
+                separator: '-',
+                length: 3
+            })]);
 
-                return response.json();
-                
-            });
-            return response;
+            return randoName;
+
         } catch (error) {
-            console.error('Unable to fetch data:', error);
+            console.error('Unable to generate name:', error);
         }
+
     }
-
-fetchNames(nameType) {
-
-    return this.fetchData(`https://www.randomlists.com/data/names-${nameType}.json`);
-}
-
-pickRandom(list) {
-    return list[Math.floor(Math.random() * list.length)];
-}
-
-async generateName(gender) {
-    try {
-        const response = await Promise.all([
-            this.fetchNames(gender || this.pickRandom(['male', 'female'])),
-            this.fetchNames('surnames')
-          ]);
-      
-          const [firstNames, lastNames] = response;
-      
-          const firstName = this.pickRandom(firstNames.data);
-          const lastName = this.pickRandom(lastNames.data);
-      
-          return `${firstName} ${lastName}`;
-        } catch (error) {
-          console.error('Unable to generate name:', error);
-        }
-      
-}
 }
 module.exports = NameGenerator;
