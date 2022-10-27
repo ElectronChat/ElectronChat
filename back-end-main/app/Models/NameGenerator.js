@@ -1,4 +1,4 @@
-const { uniqueNamesGenerator, adjectives, colors, animals } = require('unique-names-generator');
+const { uniqueNamesGenerator, adjectives, colors, animals, names } = require('unique-names-generator');
 
 class NameGenerator
 {
@@ -6,10 +6,13 @@ class NameGenerator
 
     async generateName() {
         try {
+            const chungus = ['chungus'];
             const randoName = await Promise.all([uniqueNamesGenerator({
-                dictionaries: [adjectives, colors, animals],
-                separator: '-',
-                length: 3
+                dictionaries: [adjectives,chungus],
+                separator: '_',
+                length: 2,
+                style: 'upperCase'
+
             })]);
 
             return randoName;
