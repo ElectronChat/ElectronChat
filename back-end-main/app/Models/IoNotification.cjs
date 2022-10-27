@@ -12,7 +12,7 @@ module.exports = class IoNotification
     {
         if (this.notificationType === "NEWMESSAGE")
         {
-            return "Message: " + this.object;
+            return this.object;
         }
         else if ( this.notificationType === "USERJOIN" )
         {

@@ -1,7 +1,8 @@
 import { Component} from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
-import { RoomsService } from '../rooms.service';
 @Component ( {
   selector: 'app-room-create-join',
   templateUrl: './room-create-join.component.html',
@@ -11,12 +12,13 @@ export class RoomCreateJoinComponent {
   enteredRoom = "";
   roomIndex = 0;
 
-  constructor(public roomsService: RoomsService) {}
+  constructor(private location:Location, private _router: Router) {}
 
   onJoinCreateRoom(form: NgForm) {
     if (form.invalid) { return; }
-    this.roomsService.createRoom(form.value.roomCode);
-    this.roomIndex = this.roomsService.getRooms().length - 1;
+    //this.location.replaceState(`/room/${form.value.roomCode}`);
+    this._router.navigateByUrl(`/room/${form.value.roomCode}`)
+    //this.roomIndex = this.roomsService.getRooms().length - 1;
     form.resetForm();
   }
 

@@ -6,7 +6,7 @@ import { RoomComponent } from './rooms/room/room.component';
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch:'full'},
   {path: 'home', component:RoomCreateJoinComponent},
-  {path: 'room', component:RoomComponent}
+  {path: 'room/:id', component:RoomComponent}
 ];
 
 @NgModule({
