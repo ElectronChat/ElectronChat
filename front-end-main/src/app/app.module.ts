@@ -19,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { RoomComponent } from './rooms/room/room.component';
 import { MessageComponent } from './rooms/room/message/message.component';
-
+import { CanDeactivateGuard } from './guards/can-deactivate.guard';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import { MessageComponent } from './rooms/room/message/message.component';
     MatListModule,
     ScrollingModule
   ],
-  providers: [],
+  providers: [CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

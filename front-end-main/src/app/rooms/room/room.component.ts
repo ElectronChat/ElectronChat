@@ -5,6 +5,9 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from "@angular/router";
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { MessageComponent } from './message/message.component';
+import { NavigationStart, Router } from '@angular/router'
+import { browserRefresh } from '.../app/app.component';
+
 
 @Component ( {
   selector: 'app-room',
@@ -14,6 +17,7 @@ import { MessageComponent } from './message/message.component';
 export class RoomComponent implements OnInit, OnDestroy {
   @ViewChild(CdkVirtualScrollViewport) public virtualScrollViewport?: CdkVirtualScrollViewport;
   messageList: string[] = [];
+
   //messageList: string[] = ["Random","Random", "James","Random","Random", "James","Phil","Phil","Random","Random", "James","Phil","Hello","Frgughugehgueugeugrehgurehgeughreughreughreugrheugrehgurehgruehgreughreughreugrehugrehgruehgreughreugrehgurehgreugrehgurehgreugrheugehugr"];
 
   // posts: RoomCreateJoin[] = [];
@@ -29,14 +33,17 @@ export class RoomComponent implements OnInit, OnDestroy {
       this.roomCode = params['id'];
   })
 
+  let browserRefresh = browserRefresh;
+  console.log('refreshed?:', BrowserRefresh);
+
     this.roomsService.setRoom(this.roomCode);
     this.roomsService.setupSocket();
 
     this.roomServ = this.roomsService.getNewMessage().subscribe((message: string) => {
       //this.messageList.push(message);
      this.messageList = [...this.messageList, message];
-     if (this.messageList.length > 0) {
 
+     if (this.messageList.length > 0) {
       this.virtualScrollViewport?.scrollToIndex(this.messageList.length);
     }
    });
@@ -70,5 +77,12 @@ export class RoomComponent implements OnInit, OnDestroy {
     this.roomServ.unsubscribe();
     this.roomsService.socket.removeAllListeners('chat message');
     location.reload();
+  }
+
+  canExit() {
+    if (browserRefresh){
+      return confirm('Leaving the Room with delete all messages. Are you sure?')
+    }
+    return confirm('Leaving the Room with delete all messages. Are you sure?')
   }
 }
