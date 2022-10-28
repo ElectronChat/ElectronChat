@@ -1,10 +1,12 @@
 # ElectronChat
 <div align="center">
-      <img src="electron.png" alt="electron logo" style=width:400px />
+      <img src="electron.png" alt="electron logo" style=width:400px /> <br>
+      <a href="https://github.com/ElectronChat/ElectronChat/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/ElectronChat/ElectronChat"></a>
+      <a href="https://github.com/ElectronChat/ElectronChat/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/ElectronChat/ElectronChat"></a>
+      <a href="https://github.com/ElectronChat/ElectronChat/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/ElectronChat/ElectronChat"></a>
+      <a href="https://trello.com/invite/b/ifcvhd1L/207cda6ab0bab5dd25740255f0c22318/electronchat"><img alt ="Trello" src= "https://img.shields.io/badge/Issues-trello-blue"></a>
       
 </div>
-[![GitHub license](https://img.shields.io/github/license/ElectronChat/ElectronChat)](https://github.com/ElectronChat/ElectronChat/blob/main/LICENSE)    
-<a href="https://github.com/ElectronChat/ElectronChat/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/ElectronChat/ElectronChat"></a>
 <div align="left">                                                   
 Trello board: https://trello.com/b/ifcvhd1L/electronchat
 
