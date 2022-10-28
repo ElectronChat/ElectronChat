@@ -3,7 +3,8 @@
       <img src="electron.png" alt="electron logo" style=width:400px />
       
 </div>
-[![GitHub license](https://img.shields.io/github/license/ElectronChat/ElectronChat)](https://github.com/ElectronChat/ElectronChat/blob/main/LICENSE)             
+[![GitHub license](https://img.shields.io/github/license/ElectronChat/ElectronChat)](https://github.com/ElectronChat/ElectronChat/blob/main/LICENSE)    
+<a href="https://github.com/ElectronChat/ElectronChat/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/ElectronChat/ElectronChat"></a>
 <div align="left">                                                   
 Trello board: https://trello.com/b/ifcvhd1L/electronchat
 
