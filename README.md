@@ -1,4 +1,15 @@
 # ElectronChat
+
+<div align="center">
+      div align="center"
+  </div>
+    <div align="left">
+      div align="left"
+  </div>
+    <div align="right">
+      div align="right"
+  </div>
+
 <div align="center">
 <img src="electron.png" alt="electron logo" style="width:400px;/>
 </div>
