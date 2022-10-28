@@ -1,6 +1,8 @@
 # ElectronChat
 
-<img src="electron.png" alt="electron logo" style="width:400px; text-align:center;"/>
+<img src="electron.png" alt="electron logo" style="width:400px; display: block;
+  margin-left: auto;
+  margin-right: auto;"/>
 
 Trello board: https://trello.com/b/ifcvhd1L/electronchat
 
