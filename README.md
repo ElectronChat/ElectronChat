@@ -2,6 +2,7 @@
 <div align="center">
 <img src="electron.png" alt="electron logo" style="width:400px;/>
 </div>
+<div>                                                   
 Trello board: https://trello.com/b/ifcvhd1L/electronchat
 
 This is the source code for an end to end encrypted chatroom webapp. Using this readme, you should be able to
@@ -21,3 +22,4 @@ Follow the prompts in the terminal and after a little while, the server should b
 You can now, on your browser, go to 'localhost:3000' if in dev mode, or the specified address and port to use the app.
 
 Thank you for checking out our project!
+                                                                                              </div>
