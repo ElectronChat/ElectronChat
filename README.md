@@ -1,7 +1,7 @@
 # ElectronChat
 <div align="center">
 <img src="electron.png" alt="electron logo" style="width:400px;/>
-</>
+</div>
 Trello board: https://trello.com/b/ifcvhd1L/electronchat
 
 This is the source code for an end to end encrypted chatroom webapp. Using this readme, you should be able to
