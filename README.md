@@ -1,6 +1,6 @@
 # ElectronChat
 
-![Electronchat logo](electron.png) |width = 200
+![Electronchat logo](electron.png | width = 200)
 
 Trello board: https://trello.com/b/ifcvhd1L/electronchat
 
