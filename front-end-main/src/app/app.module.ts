@@ -20,6 +20,9 @@ import { HeaderComponent } from './header/header.component';
 import { RoomComponent } from './rooms/room/room.component';
 import { MessageComponent } from './rooms/room/message/message.component';
 import { UserComponent } from './rooms/room/user/user.component';
+import { UserListComponent } from './rooms/room/userList/userList.component';
+import { MessageListComponent } from './rooms/room/messageList/messageList.component';
+import { RoomBannerComponent } from './rooms/room/roomBanner/roomBanner.component';
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import { UserComponent } from './rooms/room/user/user.component';
     HeaderComponent,
     RoomComponent,
     MessageComponent,
-    UserComponent
+    UserComponent,
+    UserListComponent,
+    MessageListComponent,
+    RoomBannerComponent
   ],
   imports: [
     BrowserModule,
