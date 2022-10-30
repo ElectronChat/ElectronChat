@@ -30,7 +30,7 @@ export class RoomComponent implements OnInit, OnDestroy {
     this.roomsService.setRoom(this.roomCode);
     this.roomsService.setupSocket();
 
-    this.roomServ = this.roomsService.getNewMessage().subscribe((message: string) => {
+    this.roomServ = this.roomsService.getNewMessage().subscribe((message: any) => {
       //this.messageList.push(message);
       this.messageList = [...this.messageList, message];
       this.virtualScrollViewport?.scrollToOffset(this.messageList.length * 100);
