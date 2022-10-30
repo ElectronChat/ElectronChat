@@ -9,31 +9,44 @@ module.exports = class HandleIo{
     {
         this.mIo = io;
         this.usernames = {};
+        this.userRooms = {};
         this.mIo.on('connection', async (socket) => {
             this.usernames[socket.id] = await gen.generateName();
+            this.userRooms[socket.id] = socket.handshake.query.roomCode;
             console.log(this.usernames);
             socket.join(socket.handshake.query.roomCode);
             this.mSocket = socket;
-            console.log(this.mSocket.id);
-            this.mIo.in(this.mSocket.handshake.query.roomCode).emit("user_join", this.usernames[socket.id]);
-            this.listen();
+            console.log(socket.id);
+
+            try {
+                Object.keys(this.usernames).forEach(element => {
+                    if( this.userRooms[element] == socket.handshake.query.roomCode )
+                    {
+                        this.mIo.in(socket.handshake.query.roomCode).emit("user_join", this.usernames[element]);
+                    }
+                });
+                
+            } catch (error) {
+                console.log(Object.keys(this.usernames));
+            }
+            this.listen(socket);
           });
         this.list = [];
     }
 
-    listen()
+    listen(socket)
     {
-        this.mSocket.on( "chat message", (msg) => {
-                console.log(this.mSocket.user + ": " + msg);
-                  this.mIo.in(this.mSocket.handshake.query.roomCode).emit("chat message", new message(this.usernames[this.mSocket.id], this.MessageRecieved(msg)));
-                    console.log(this.mSocket.id);
+        socket.on( "chat message", (msg) => {
+                console.log(socket.user + ": " + msg);
+                  this.mIo.in(socket.handshake.query.roomCode).emit("chat message", new message(this.usernames[socket.id], this.MessageRecieved(msg)));
+                    console.log(socket.id);
                 });
-        this.mSocket.on("room created", (id)=>{
+        socket.on("room created", (id)=>{
             console.log(this.CreateRoom(id));
         });
 
         this.mIo.on('disconnect', (socket) => {
-            this.mIo.in(this.mSocket.handshake.query.roomCode).emit("user_disconnect", this.usernames[this.mSocket.id]);
+            this.mIo.in(socket.handshake.query.roomCode).emit("user_disconnect", this.usernames[socket.id]);
           });
     }
 

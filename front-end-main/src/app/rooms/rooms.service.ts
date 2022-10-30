@@ -9,6 +9,7 @@ import { RoomCreateJoin } from "./room-create-join.model";
 @Injectable({providedIn: 'root'})
 export class RoomsService {
   public message$: BehaviorSubject<string> = new BehaviorSubject('');
+  public user$: BehaviorSubject<string> = new BehaviorSubject('');
   public newMessage = "";
   public roomcode = "";
   private rooms: RoomCreateJoin[] = [];
@@ -42,9 +43,17 @@ export class RoomsService {
       console.log(this.newMessage);
     });
 
+    
     return this.message$.asObservable();
   };
 
+  public getNewUser = () => {
+    this.socket.on('user_join', (user:string) => {
+      this.user$.next(user);
+    });
+    return this.user$.asObservable();
+  };
+  
   getRooms() { return [...this.rooms]; }
 
   getRoomUpdateListener() {
