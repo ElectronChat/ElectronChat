@@ -14,9 +14,10 @@ export class RoomComponent implements OnInit, OnDestroy {
   @ViewChild(CdkVirtualScrollViewport) public virtualScrollViewport?: CdkVirtualScrollViewport;
   //messageList: string[] = [];
   messageList: string[] = ["Random","Random", "James","Random","Random", "James","Phil","Phil","Random","Random", "James","Phil","Hello","Frgughugehgueugeugrehgurehgeughreughreughreugrheugrehgurehgruehgreughreughreugrehugrehgruehgreughreugrehgurehgreugrehgurehgreugrheugehugr"];
-  userList: string[] = ["Jamewfewfewfewfewfewfewfewfwes","Hellooeowfofoefeowfoew", "Philip", "Semaj", "Pilihp", "Henry", "Zac", "Paul", "George", "Lenoard", "Harry"];
+  userList: string[] = [];
   // posts: RoomCreateJoin[] = [];
   private roomServ: Subscription = new Subscription;
+  private userServ: Subscription = new Subscription;
   private roomCode: string = "";
 
   constructor(public roomsService: RoomsService, private route: ActivatedRoute) {}
@@ -35,6 +36,21 @@ export class RoomComponent implements OnInit, OnDestroy {
       this.messageList = [...this.messageList, message];
       this.virtualScrollViewport?.scrollToOffset(this.messageList.length * 100);
    });
+
+   this.userServ = this.roomsService.getNewUser().subscribe((user: string) => {
+    if(!this.userList.includes(user.toString()))
+    {
+      console.log(user.toString());
+
+      this.userList = [ ...this.userList, user.toString()];
+      console.log(this.userList);
+    }
+    else
+    {
+      console.log("pass")
+    }
+   });
+
   }
 
   // Called when a message is typed and send button is pressed
