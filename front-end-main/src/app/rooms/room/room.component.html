@@ -1,32 +1,8 @@
-<div class="roomBanner">
-  <h1>Room Code: {{getRoomCode()}}</h1>
-  <h1>{{getUserListLength()}} Current Users</h1>
-  <button mat-raised-button class="button" routerLink="/home">Leave Room</button>
-</div>
+<room-banner [numUsers]="this.getUserListLength()" [roomCode]="this.getRoomCode()"></room-banner>
 
 <div class="viewportParent">
-  <div class="userList">
-    <div class="userTab">Users</div>
-    <mat-divider></mat-divider>
-    <cdk-virtual-scroll-viewport [itemSize]="50" class="userViewport">
-      <table>
-
-        <div #virtualScroll *cdkVirtualFor="let user of userList">
-          <user [userText]="user"></user>
-        </div>
-      </table>
-      </cdk-virtual-scroll-viewport>
-  </div>
-
-
-  <div class="viewportWrapper">
-    <cdk-virtual-scroll-viewport [itemSize]="50" class="msgViewport">
-      <div #virtualScroll *cdkVirtualFor="let message of messageList">
-        <message [messageText]="message"></message>
-      </div>
-    </cdk-virtual-scroll-viewport>
-
-  </div>
+  <user-list [userList]="userList"></user-list>
+  <message-list [messageList]="messageList"></message-list>
 </div>
 
 <div class="input">
@@ -40,7 +16,6 @@
     <button
     mat-raised-button
     type="submit"
-    [disabled]="new_message.invalid"
-    class="sendButton">Send</button>
+    [disabled]="new_message.invalid">Send</button>
   </form>
 </div>

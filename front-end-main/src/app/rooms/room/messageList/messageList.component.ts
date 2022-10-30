@@ -2,12 +2,12 @@ import { Component, Input, ViewChild} from '@angular/core';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Component ( {
-  selector: 'user-list',
-  templateUrl: './userList.component.html',
-  styleUrls: ['./userList.component.css']
+  selector: 'message-list',
+  templateUrl: './messageList.component.html',
+  styleUrls: ['./messageList.component.css']
 })
-export class UserListComponent {
+export class MessageListComponent {
   @ViewChild(CdkVirtualScrollViewport) public virtualScrollViewport?: CdkVirtualScrollViewport;
-  @Input() userList!: string[];
+  @Input() messageList!: string[];
   constructor() {}
 }

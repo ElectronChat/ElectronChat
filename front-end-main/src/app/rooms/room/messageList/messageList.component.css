@@ -1,0 +1,13 @@
+.cdkViewportWrapper{
+  width:100%;
+  height: 100%;
+  display: left;
+}
+
+.msgViewport {
+  height: 100%;
+  width: 67%;
+  border: 5px solid rgb(150, 150, 240);
+  border-radius: 0px;
+  background-color: rgb(180,180,270);
+}

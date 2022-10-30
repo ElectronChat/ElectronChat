@@ -1,0 +1,15 @@
+.roomBanner{
+  display: flex;
+  justify-content: space-between;
+  width:83.8%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  border: 5px solid rgb(150, 150, 240);
+  border-radius: 0px;
+  background-color: rgb(180,180,270);
+}
+
+button {
+  background-color: rgb(150,150,240);
+  color:aliceblue;
+}

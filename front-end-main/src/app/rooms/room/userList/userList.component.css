@@ -11,11 +11,23 @@
 }
 
 .userList {
-  float:inline-start;
-  height: 70vh;
+  float: left;
+  height: 100%;
   width: 15%;
   margin-right: 1%;
   border: 5px solid rgb(150, 150, 240);
   border-radius: 0px;
   background-color: rgb(180,180,270);
+}
+
+table div:nth-child(even)
+{
+  border: 20px solid rgb(180,180,270);
+  background-color: rgb(180,180,270);
+}
+
+table div:nth-child(odd)
+{
+  border: 20px solid rgb(150, 150, 240);
+  background-color: rgb(150, 150, 240);
 }
