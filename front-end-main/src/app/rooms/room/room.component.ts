@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { RoomsService } from '../rooms.service';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Component ( {
@@ -20,7 +20,6 @@ export class RoomComponent implements OnInit, OnDestroy {
   private roomCode: string = "";
 
   constructor(public roomsService: RoomsService, private route: ActivatedRoute) {}
-
   // Constructor for component. Subscribes to io for messages. When new message is acquired,
   // will append to current list
   ngOnInit() {
