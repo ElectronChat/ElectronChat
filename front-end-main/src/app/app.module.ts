@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { RoomComponent } from './rooms/room/room.component';
 import { MessageComponent } from './rooms/room/message/message.component';
+import { UserComponent } from './rooms/room/user/user.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MessageComponent } from './rooms/room/message/message.component';
     RoomCreateJoinComponent,
     HeaderComponent,
     RoomComponent,
-    MessageComponent
+    MessageComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

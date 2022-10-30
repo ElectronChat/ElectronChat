@@ -1,23 +1,42 @@
-html, body{
-  margin: 0%;
-  padding: 0%;
-  width: 100%;
-  height: 100%;
-}
-
 .viewportWrapper {
   width:100%;
   height: 70vh;
-  top:0px;
+}
+
+.viewportParent
+{
+  height: 70vh;
+  width: 100%;
+}
+
+.userList {
+  float:inline-start;
+  height: 70vh;
+  width: 15%;
+  margin-right: 1%;
+  border: 5px solid rgb(150, 150, 240);
+  border-radius: 0px;
+  background-color: rgb(180,180,270);
 }
 
 mat-form-field {
   width: 90%;
 }
 
+table div:nth-child(even)
+{
+  border: 20px solid rgb(180,180,270);
+  background-color: rgb(180,180,270);
+}
+
+table div:nth-child(odd)
+{
+  border: 20px solid rgb(150, 150, 240);
+  background-color: rgb(150, 150, 240);
+}
 
 button {
-  background-color: rgb(180,180,270);
+  background-color: rgb(150,150,240);
   color:aliceblue;
 }
 
@@ -25,17 +44,31 @@ button:disabled {
   background-color: rgb(10,120,210);
   color:aliceblue;
 }
-.cdkViewport {
+
+.msgViewport {
   height: 100%;
-  width: 100%;
+  width: 67%;
   border: 5px solid rgb(150, 150, 240);
   border-radius: 0px;
   background-color: rgb(180,180,270);
 }
 
-.input{
-  margin-top: 1rem;
+.userViewport {
+  height:95%;
   width: 100%;
+}
+
+.userTab
+{
+  text-align: center;
+  height:5%;
+  font-size: 150%;
+}
+
+
+.input{
+  margin-top: 1%;
+  width: 83.5%;
   border: 5px solid rgb(150, 150, 240);
   border-radius: 0px;
   background-color: rgb(180,180,270);
@@ -54,4 +87,15 @@ button:disabled {
 ::ng-deep.mat-form-field-ripple {
  /*change color of underline when focused*/
  background-color: transparent !important;
+}
+
+.roomBanner{
+  display: flex;
+  justify-content: space-between;
+  width:83.8%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  border: 5px solid rgb(150, 150, 240);
+  border-radius: 0px;
+  background-color: rgb(180,180,270);
 }
