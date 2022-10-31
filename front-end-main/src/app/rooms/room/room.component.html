@@ -1,28 +1,21 @@
-<div class="viewportWrapper">
-  <cdk-virtual-scroll-viewport [itemSize]="50" class="cdkViewport">
-    <div #virtualScroll *cdkVirtualFor="let message of messageList">
-      <message [messageText]="message"></message>
-    </div>
-  </cdk-virtual-scroll-viewport>
+<room-banner [numUsers]="this.getUserListLength()" [roomCode]="this.getRoomCode()"></room-banner>
 
+<div class="viewportParent">
+  <user-list [userList]="userList"></user-list>
+  <message-list [messageList]="messageList"></message-list>
+</div>
 
-  <!-- <div class="footer">
-    <mat-card class = "Inputbox"> -->
-    <div class="input">
-      <form (submit)="sendMessage(roomForm)" #roomForm="ngForm">
-        <mat-form-field class="formField">
-          <input matInput type="text" name="new_message" ngModel required minLength="3"
-          placeholder="Enter message"
-          #new_message ="ngModel">
-          <mat-error *ngIf="new_message.invalid">Please enter a message.</mat-error>
-        </mat-form-field>
-        <button
-        mat-raised-button
-        type="submit"
-        [disabled]="new_message.invalid"
-        class="sendButton">Send</button>
-      </form>
-      <!-- </mat-card>
-      </div> -->
-    </div>
-    </div>
+<div class="input">
+  <form (submit)="sendMessage(roomForm)" #roomForm="ngForm">
+    <mat-form-field class="formField">
+      <input matInput type="text" name="new_message" ngModel required minLength="3"
+      placeholder="Enter message"
+      #new_message ="ngModel">
+      <mat-error *ngIf="new_message.invalid">Please enter a message.</mat-error>
+    </mat-form-field>
+    <button
+    mat-raised-button
+    type="submit"
+    [disabled]="new_message.invalid">Send</button>
+  </form>
+</div>
