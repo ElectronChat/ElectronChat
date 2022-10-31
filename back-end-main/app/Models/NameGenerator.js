@@ -11,7 +11,7 @@ class NameGenerator
                 dictionaries: [adjectives,chungus],
                 separator: '_',
                 length: 2,
-                style: 'uppercase'
+                style: 'capital'
 
             })]);
 
