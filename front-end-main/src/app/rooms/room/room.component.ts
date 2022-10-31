@@ -12,9 +12,10 @@ import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 })
 export class RoomComponent implements OnInit, OnDestroy {
   @ViewChild(CdkVirtualScrollViewport) public virtualScrollViewport?: CdkVirtualScrollViewport;
-  //messageList: string[] = [];
-  messageList: string[] = ["Random","Random", "James","Random","Random", "James","Phil","Phil","Random","Random", "James","Phil","Hello","Frgughugehgueugeugrehgurehgeughreughreughreugrheugrehgurehgruehgreughreughreugrehugrehgruehgreughreugrehgurehgreugrehgurehgreugrheugehugr"];
+  messageList: string[] = [];
+  //messageList: string[] = ["Random","Random", "James","Random","Random", "James","Phil","Phil","Random","Random", "James","Phil","Hello","Frgughugehgueugeugrehgurehgeughreughreughreugrheugrehgurehgruehgreughreughreugrehugrehgruehgreughreugrehgurehgreugrehgurehgreugrheugehugr"];
   userList: string[] = [];
+
   // posts: RoomCreateJoin[] = [];
   private roomServ: Subscription = new Subscription;
   private userServ: Subscription = new Subscription;
@@ -36,8 +37,11 @@ export class RoomComponent implements OnInit, OnDestroy {
       this.messageList = [...this.messageList, message];
       this.virtualScrollViewport?.scrollToOffset(this.messageList.length * 100);
    });
-
    this.userServ = this.roomsService.getNewUser().subscribe((user: string) => {
+    if(this.userList.includes(""))
+    {
+      this.userList.shift()
+    }
     if(!this.userList.includes(user.toString()))
     {
       console.log(user.toString());
