@@ -2,5 +2,10 @@
 mat-toolbar {
   background-color: rgb(90,90,160);
   color: aliceblue;
+  display: flex;
+  justify-content: space-between;
 }
 
+.spacer {
+  flex: 1 1 auto;
+}

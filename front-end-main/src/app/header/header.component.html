@@ -1,8 +1,15 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <button mat-button routerLink="/home">
+    <button mat-button routerLink="/home" class="left">
       <mat-icon>speaker_notes</mat-icon>
       Electron Chat
     </button>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/about-us"> About Us </button>
+
+    <button mat-button onclick="location.href='https://github.com/ElectronChat/ElectronChat'">
+      GitHub
+    </button>
+
   </mat-toolbar-row>
 </mat-toolbar>
