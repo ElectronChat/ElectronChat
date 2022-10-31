@@ -1,23 +1,15 @@
-html, body{
-  margin: 0%;
-  padding: 0%;
-  width: 100%;
-  height: 100%;
-}
-
-.viewportWrapper {
-  width:100%;
+.viewportParent
+{
   height: 70vh;
-  top:0px;
+  width: 100%;
 }
 
 mat-form-field {
   width: 90%;
 }
 
-
 button {
-  background-color: rgb(180,180,270);
+  background-color: rgb(150,150,240);
   color:aliceblue;
 }
 
@@ -25,17 +17,10 @@ button:disabled {
   background-color: rgb(10,120,210);
   color:aliceblue;
 }
-.cdkViewport {
-  height: 100%;
-  width: 100%;
-  border: 5px solid rgb(150, 150, 240);
-  border-radius: 0px;
-  background-color: rgb(180,180,270);
-}
 
 .input{
-  margin-top: 1rem;
-  width: 100%;
+  margin-top: 20px;
+  width: 83.5%;
   border: 5px solid rgb(150, 150, 240);
   border-radius: 0px;
   background-color: rgb(180,180,270);
