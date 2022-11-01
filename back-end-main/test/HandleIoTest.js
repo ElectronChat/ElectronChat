@@ -1,9 +1,10 @@
 const assert = require('chai').assert;
 const express = require('express');
-const {server} = require('socket.io');
+const {server, Server} = require('socket.io');
 
 const HandleIo = require('../app/Models/HandleIo');
 const IoNotification = require('../app/Models/IoNotification');
+const http = require("http");
 
 describe('HandleIo', function(){
   const app = express();
@@ -22,7 +23,7 @@ describe('HandleIo', function(){
         testId = 123;
         return_var = HandleIo.notify(new IoNotification("CREATEROOM", testId));
 
-        assert.equal(return_var, '{roomID} : Room Created!');
+        assert.equal(return_var, '{$roomID} : Room Created!');
     })
   })
 

@@ -1,7 +1,7 @@
 const assert = require('chai').assert;
-const IoNotification = require('../app/Models/DbConnect');
+const IoNotification = require('../app/Models/IoNotification');
 
-descripe('IoNotification', function(){
+describe('IoNotification', function(){
 
   describe("GetMessage", function() {
     test_object = "test"
