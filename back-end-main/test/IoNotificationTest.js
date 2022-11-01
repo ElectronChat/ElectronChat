@@ -4,7 +4,7 @@ const IoNotification = require('../app/Models/IoNotification');
 describe('IoNotification', function(){
 
   describe("GetMessage", function() {
-    test_object = "test"
+    test_object = "Message: test"
     notification = new IoNotification("NEWMESSAGE", test_object);
     return_var = notification.GetMessage();
 
