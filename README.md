@@ -14,6 +14,7 @@
 <a href="https://angular.io/"><img alt ="angular" src= "https://img.shields.io/badge/Dependency-Angular-red"></a>
 <br>
 Here is a usefull link to install node.js : https://kinsta.com/blog/how-to-install-node-js/
+<br>
 Here is a usefull link to install angular if running npm install does not install it: https://angular.io/cli 
 
 <br> *** note you most likely will not have to install angular as calling npm install in the project folder should install it for you ***
