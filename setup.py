@@ -1,6 +1,6 @@
 import os
 
-u = input("are you a local developer? y/n: ")
+u = input("are you a local developer y/n: (select 'y' if you want to build and run locally, 'n' if you want to deploy) ")
 if u == "y":
     File = open("./back-end-main/.env", "w")
     File.write("host=localhost\nport=3000")
@@ -29,3 +29,5 @@ os.system("npm install -g @angular/cli")
 os.system("ng build")
 os.chdir("../back-end-main")
 os.system("node index.js")
+print("Enter in your browser " + ip + ":" + port + " to access built website.")
+
