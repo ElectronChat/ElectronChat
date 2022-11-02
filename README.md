@@ -12,6 +12,7 @@
 # Dependencies 
 <a href="https://nodejs.org/en/"><img alt ="node" src= "https://img.shields.io/badge/Dependency-Node.js-brightgreen"></a>
 <a href="https://angular.io/"><img alt ="angular" src= "https://img.shields.io/badge/Dependency-Angular-red"></a>
+<br>
 Here is a usefull link to install node.js : https://kinsta.com/blog/how-to-install-node-js/
 Here is a usefull link to install angular if running npm install does not install it: https://angular.io/cli 
 
