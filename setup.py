@@ -2,6 +2,8 @@ import os
 
 u = input("are you a local developer y/n: (select 'y' if you want to build and run locally, 'n' if you want to deploy) ")
 if u == "y":
+    ip = "localhost"
+    port = "3000"
     File = open("./back-end-main/.env", "w")
     File.write("host=localhost\nport=3000")
     File.close()
