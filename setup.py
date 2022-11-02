@@ -28,6 +28,6 @@ os.system("npm install")
 os.system("npm install -g @angular/cli")
 os.system("ng build")
 os.chdir("../back-end-main")
-os.system("node index.js")
 print("Enter in your browser " + ip + ":" + port + " to access built website.")
+os.system("node index.js")
 
