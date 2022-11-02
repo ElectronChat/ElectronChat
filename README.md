@@ -12,6 +12,9 @@
 # Dependencies 
 <a href="https://nodejs.org/en/"><img alt ="node" src= "https://img.shields.io/badge/Dependency-Node.js-brightgreen"></a>
 <a href="https://angular.io/"><img alt ="angular" src= "https://img.shields.io/badge/Dependency-Angular-red"></a>
+Here is a usefull link to install node.js : https://kinsta.com/blog/how-to-install-node-js/
+Here is a usefull link to install angular if running npm install does not install it: https://angular.io/cli 
+
 <br> *** note you most likely will not have to install angular as calling npm install in the project folder should install it for you ***
 ## Summary
 Electronchat is a repository providing the skeleton of a privacy oriented chat website. 
@@ -22,6 +25,7 @@ Some of our key features include
 * [x] Easily expandable codebase
 
 # Getting Started
+Usefull commands: 
 ```sh
 python3 setup.py                    # Call this command in the root directory to install all node dependancies and angular dependancies. (need node installed)
                                     # this will also build the frontend and start the backend. 
