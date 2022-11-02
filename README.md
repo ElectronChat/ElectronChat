@@ -27,7 +27,7 @@ Some of our key features include
 * [x] Easily expandable codebase
 
 # Getting Started
-Usefull commands: 
+Useful commands: 
 ```sh
 python3 setup.py                    # Call this command in the root directory to install all node dependancies and angular dependancies. (need node installed)
                                     # this will also build the frontend and start the backend. 
