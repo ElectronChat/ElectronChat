@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-​
+
 @Component({
   selector: 'message',
   templateUrl: './message.component.html',
