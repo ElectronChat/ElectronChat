@@ -21,27 +21,27 @@ describe('HandleIo', function(){
   describe('CreateRoom', function(){
     it('CreateRoom should return "roomID : Room Created!"', function(){
         testId = 123;
-        return_var = handler.CreateRoom(new IoNotification("CREATEROOM", testId));
+        return_var = handler.CreateRoom(testId);
 
-        assert.equal(return_var, '{$roomID} : Room Created!');
+        assert.equal(return_var, '123 : Room Created!');
     })
   })
 
   describe('UserJoin', function(){
     it('UserJoin should return "user Joined the room!"', function(){
         user = "Joe";
-        return_var = handler.UserJoin(new IoNotification("USERJOIN", user))
+        return_var = handler.UserJoin(user)
 
-        assert.equal(return_var, '{user} Joined the room!');
+        assert.equal(return_var, 'Joe Joined the room!');
     })
   })
 
   describe('MessageRecieved', function(){
     it('MessageRecieved should return "Message: {userMessage}"', function(){
         let message = "test message"
-        let return_var = handler.MessageRecieved(new IoNotification("NEWMESSAGE", message))
+        let return_var = handler.MessageRecieved(message)
 
-        assert.equal(return_var, 'Message: test message');
+        assert.equal(return_var, 'test message');
     })
   })
 
@@ -49,7 +49,7 @@ describe('HandleIo', function(){
   describe('notify', function(){
     it('notify should return requested Handle, this case error', function(){
         notification = handler.notify(new IoNotification("ERROR", "test"))
-        return_var = notification.GetMessage();
+        return_var = notification;
 
         assert.equal(return_var, 'error');
     })
