@@ -5,9 +5,9 @@ module.exports = class message
         this.name = name;
         this.message = message;
 
-
     }
 
     getMessage() {return this.message};
     getName() {return this.name};
+  
 }
