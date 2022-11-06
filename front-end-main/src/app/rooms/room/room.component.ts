@@ -2,10 +2,8 @@ import { Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { RoomsService } from '../rooms.service';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute} from "@angular/router";
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
-import { MessageComponent } from './message/message.component';
-import { NavigationStart, Router } from '@angular/router'
 
 @Component ( {
   selector: 'app-room',
@@ -76,7 +74,7 @@ export class RoomComponent implements OnInit, OnDestroy {
   canExit() {
     return confirm('Leaving the Room with delete all messages. Are you sure?')
   }
-  
+
   getUserListLength()
   {
     return this.userList.length;

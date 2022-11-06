@@ -1,6 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router'
-import { Subscription } from 'rxjs';
+import { Component} from '@angular/core';
 
 
 @Component({
