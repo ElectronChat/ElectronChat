@@ -1,14 +1,13 @@
 module.exports = class message
 {
-    constructor(name, message,socketId)
+    constructor(name, message)
     {
         this.name = name;
         this.message = message;
-        this.socketId = socketId
+
 
     }
 
     getMessage() {return this.message};
     getName() {return this.name};
-    getSocketId() {return this.socketId}
 }
