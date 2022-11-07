@@ -2,7 +2,7 @@
 
 <div class="viewportParent">
   <user-list [userList]="userList"></user-list>
-  <message-list [messageList]="messageList"></message-list>
+  <message-list [messageList]="messageList" [myId]="this.roomsService.socket.id"></message-list>
 </div>
 
 <div class="input">
