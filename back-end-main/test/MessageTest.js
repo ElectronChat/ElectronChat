@@ -23,7 +23,7 @@ describe('Message', function() {
 
     describe('getSocketId',function (){
         it('getSocketId should return 21383171923', function(){
-            assert.equal(message.getSocketId(), '21383171923');
+            assert.equal(message.getSocket(), '21383171923');
         })
 
     })
