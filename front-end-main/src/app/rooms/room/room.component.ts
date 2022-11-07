@@ -24,6 +24,12 @@ export class RoomComponent implements OnInit, OnDestroy {
   constructor(public roomsService: RoomsService, private route: ActivatedRoute) {}
   // Constructor for component. Subscribes to io for messages. When new message is acquired,
   // will append to current list
+  
+  onLoad()
+  {
+
+  }
+
   ngOnInit() {
     this.route.params.subscribe(params=>{
       this.roomCode = params['id'];
@@ -35,8 +41,10 @@ export class RoomComponent implements OnInit, OnDestroy {
     this.roomServ = this.roomsService.getNewMessage().subscribe((message: any) => {
       //this.messageList.push(message);
       this.messageList = [...this.messageList, message];
-      this.virtualScrollViewport?.scrollToOffset(this.messageList.length * 100);
    });
+
+
+
    this.userServ = this.roomsService.getNewUser().subscribe((user: string) => {
     if(this.userList.includes(""))
     {
