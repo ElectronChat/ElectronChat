@@ -38,8 +38,9 @@ module.exports = class HandleIo{
     {
         socket.on( "chat message", (msg) => {
                 console.log(socket.user + ": " + msg);
-                  this.mIo.in(socket.handshake.query.roomCode).emit("chat message", new message(this.usernames[socket.id], this.MessageRecieved(msg)));
+                  this.mIo.in(socket.handshake.query.roomCode).emit("chat message", new message(this.usernames[socket.id], this.MessageRecieved(msg),socket.id));
                     console.log(socket.id);
+                    console.log(new message(this.usernames[socket.id], this.MessageRecieved(msg),socket.id))
                 });
         socket.on("room created", (id)=>{
             console.log(this.CreateRoom(id));

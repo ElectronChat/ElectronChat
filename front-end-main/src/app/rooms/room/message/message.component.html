@@ -1,1 +1,5 @@
-<div *ngIf="messageText != ''" class="msg"><p class="msg-span">{{messageText['name']}} : {{messageText['message']}}</p></div>
+<div *ngIf="myId != messageText['socketId']; else ownedMsg" class="msg"><p class="msg-span">{{messageText['name']}} : {{messageText['message']}}</p></div>
+
+<ng-template #ownedMsg>
+  <div class="ownedMsg"><p class="msg-span">{{messageText['name']}} : {{messageText['message']}}</p></div>
+</ng-template>

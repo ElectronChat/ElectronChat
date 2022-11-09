@@ -3,7 +3,6 @@
   <mat-divider></mat-divider>
   <cdk-virtual-scroll-viewport [itemSize]="50" class="userViewport">
     <table>
-
       <div #virtualScroll *cdkVirtualFor="let user of userList">
         <user [userText]="user"></user>
       </div>

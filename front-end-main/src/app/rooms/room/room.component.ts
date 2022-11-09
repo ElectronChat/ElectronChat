@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { RoomsService } from '../rooms.service';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute} from "@angular/router";
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Component ( {
@@ -12,9 +12,10 @@ import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 })
 export class RoomComponent implements OnInit, OnDestroy {
   @ViewChild(CdkVirtualScrollViewport) public virtualScrollViewport?: CdkVirtualScrollViewport;
-  //messageList: string[] = [];
-  messageList: string[] = ["Random","Random", "James","Random","Random", "James","Phil","Phil","Random","Random", "James","Phil","Hello","Frgughugehgueugeugrehgurehgeughreughreughreugrheugrehgurehgruehgreughreughreugrehugrehgruehgreughreugrehgurehgreugrehgurehgreugrheugehugr"];
+  messageList: string[] = [];
+  //messageList: string[] = ["Random","Random", "James","Random","Random", "James","Phil","Phil","Random","Random", "James","Phil","Hello","Frgughugehgueugeugrehgurehgeughreughreughreugrheugrehgurehgruehgreughreughreugrehugrehgruehgreughreugrehgurehgreugrehgurehgreugrheugehugr"];
   userList: string[] = [];
+
   // posts: RoomCreateJoin[] = [];
   private roomServ: Subscription = new Subscription;
   private userServ: Subscription = new Subscription;
@@ -23,10 +24,17 @@ export class RoomComponent implements OnInit, OnDestroy {
   constructor(public roomsService: RoomsService, private route: ActivatedRoute) {}
   // Constructor for component. Subscribes to io for messages. When new message is acquired,
   // will append to current list
+  
+  onLoad()
+  {
+
+  }
+
   ngOnInit() {
     this.route.params.subscribe(params=>{
       this.roomCode = params['id'];
-  })
+    })
+
 
     this.roomsService.setRoom(this.roomCode);
     this.roomsService.setupSocket();
@@ -34,10 +42,15 @@ export class RoomComponent implements OnInit, OnDestroy {
     this.roomServ = this.roomsService.getNewMessage().subscribe((message: any) => {
       //this.messageList.push(message);
       this.messageList = [...this.messageList, message];
-      this.virtualScrollViewport?.scrollToOffset(this.messageList.length * 100);
    });
 
+
+
    this.userServ = this.roomsService.getNewUser().subscribe((user: string) => {
+    if(this.userList.includes(""))
+    {
+      this.userList.shift()
+    }
     if(!this.userList.includes(user.toString()))
     {
       console.log(user.toString());
@@ -68,6 +81,10 @@ export class RoomComponent implements OnInit, OnDestroy {
     this.roomServ.unsubscribe();
     this.roomsService.socket.removeAllListeners('chat message');
     location.reload();
+  }
+
+  canExit() {
+    return confirm('Leaving the Room with delete all messages. Are you sure?')
   }
 
   getUserListLength()

@@ -19,12 +19,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { RoomComponent } from './rooms/room/room.component';
 import { MessageComponent } from './rooms/room/message/message.component';
+import { CanDeactivateGuard } from './guards/can-deactivate.guard';
 import { UserComponent } from './rooms/room/user/user.component';
 import { UserListComponent } from './rooms/room/userList/userList.component';
 import { MessageListComponent } from './rooms/room/messageList/messageList.component';
 import { RoomBannerComponent } from './rooms/room/roomBanner/roomBanner.component';
 import { AboutUsComponent } from './aboutUs/aboutUs.component';
-
 
 @NgModule({
   declarations: [
@@ -54,7 +54,7 @@ import { AboutUsComponent } from './aboutUs/aboutUs.component';
     MatListModule,
     ScrollingModule
   ],
-  providers: [],
+  providers: [CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,9 +2,16 @@
 
 <div class="viewportParent">
   <user-list [userList]="userList"></user-list>
-  <message-list [messageList]="messageList"></message-list>
+  <div class="cdkViewportWrapper">
+  <div id="msg" onload="onLoad()" class="msgViewport" style="overflow: auto;">
+    <div  class="" *ngFor="let message of messageList">
+      <message [message]="message"></message>
+    </div>
+
+  </div>
 </div>
 
+</div> 
 <div class="input">
   <form (submit)="sendMessage(roomForm)" #roomForm="ngForm">
     <mat-form-field class="formField">
