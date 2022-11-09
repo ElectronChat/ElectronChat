@@ -1,9 +1,10 @@
 const assert = require('chai').assert;
 const express = require('express');
-const {server} = require('socket.io');
+const {server, Server} = require('socket.io');
 
 const HandleIo = require('../app/Models/HandleIo');
 const IoNotification = require('../app/Models/IoNotification');
+const http = require("http");
 
 describe('HandleIo', function(){
   const app = express();
@@ -20,35 +21,35 @@ describe('HandleIo', function(){
   describe('CreateRoom', function(){
     it('CreateRoom should return "roomID : Room Created!"', function(){
         testId = 123;
-        return_var = HandleIo.notify(new IoNotification("CREATEROOM", testId));
+        return_var = handler.CreateRoom(testId);
 
-        assert.equal(return_var, '{roomID} : Room Created!');
+        assert.equal(return_var, '123 : Room Created!');
     })
   })
 
   describe('UserJoin', function(){
     it('UserJoin should return "user Joined the room!"', function(){
         user = "Joe";
-        return_var = HandleIo.notify(new IoNotification("USERJOIN", user))
+        return_var = handler.UserJoin(user)
 
-        assert.equal(return_var, '{user} Joined the room!');
+        assert.equal(return_var, 'Joe Joined the room!');
     })
   })
 
   describe('MessageRecieved', function(){
     it('MessageRecieved should return "Message: {userMessage}"', function(){
-        message = "test message"
-        return_var = HandleIo.notify(new IoNotification("NEWMESSAGE", message))
+        let message = "test message"
+        let return_var = handler.MessageRecieved(message)
 
-        assert.equal(return_var, 'Message: test message');
+        assert.equal(return_var, 'test message');
     })
   })
 
   // Testing error, GetMessage should return "error"
   describe('notify', function(){
     it('notify should return requested Handle, this case error', function(){
-        notification = HandleIo.notify(new IoNotification("ERROR", "test"))
-        return_var = notification.GetMessage();
+        notification = handler.notify(new IoNotification("ERROR", "test"))
+        return_var = notification;
 
         assert.equal(return_var, 'error');
     })

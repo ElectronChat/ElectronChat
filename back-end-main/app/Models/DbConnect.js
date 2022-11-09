@@ -11,7 +11,7 @@ class DbConnector{
 
     getIp()
     {
-        return this.mInterface.getip();
+        return this.mInterface.getIp();
     }
 
     getAllMsgs(roomID)

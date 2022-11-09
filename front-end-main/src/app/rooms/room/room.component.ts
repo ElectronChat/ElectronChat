@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { RoomsService } from '../rooms.service';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute} from "@angular/router";
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Component ( {
@@ -33,7 +33,8 @@ export class RoomComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.params.subscribe(params=>{
       this.roomCode = params['id'];
-  })
+    })
+
 
     this.roomsService.setRoom(this.roomCode);
     this.roomsService.setupSocket();
@@ -80,6 +81,10 @@ export class RoomComponent implements OnInit, OnDestroy {
     this.roomServ.unsubscribe();
     this.roomsService.socket.removeAllListeners('chat message');
     location.reload();
+  }
+
+  canExit() {
+    return confirm('Leaving the Room with delete all messages. Are you sure?')
   }
 
   getUserListLength()

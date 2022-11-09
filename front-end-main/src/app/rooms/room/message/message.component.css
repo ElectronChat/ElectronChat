@@ -17,3 +17,13 @@
   max-inline-size: 40%;
   overflow-wrap: anywhere;
 }
+
+.ownedMsg
+{
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: 0;
+  margin-bottom: 2rem;
+  max-inline-size: 40%;
+  overflow-wrap: anywhere;
+}

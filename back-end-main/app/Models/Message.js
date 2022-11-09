@@ -9,5 +9,6 @@ module.exports = class message
 
     getMessage() {return this.message};
     getName() {return this.name};
-    getSocketId() {return this.socketId}
+    getSocket(){return this.socketId};
+  
 }

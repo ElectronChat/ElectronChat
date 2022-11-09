@@ -9,5 +9,6 @@ import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 export class MessageListComponent {
   @ViewChild(CdkVirtualScrollViewport) public virtualScrollViewport?: CdkVirtualScrollViewport;
   @Input() messageList!: string[];
+  @Input() myId!: any;
   constructor() {}
 }

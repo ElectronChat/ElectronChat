@@ -16,4 +16,5 @@ export class MessageComponent {
     }
   }
   @Input() message!: any;
+  @Input() myId!: any;
 }
