@@ -10,13 +10,14 @@ import { RoomCreateJoin } from "./room-create-join.model";
 export class RoomsService {
   public message$: BehaviorSubject<string> = new BehaviorSubject('');
   public user$: BehaviorSubject<string> = new BehaviorSubject('');
+  public userDisconnect$ :BehaviorSubject<string> = new BehaviorSubject('');
   public newMessage = "";
   public roomcode = "";
   private rooms: RoomCreateJoin[] = [];
   private roomsUpdated = new Subject<RoomCreateJoin[]>();
   public socket: any;
   constructor() {
-    
+
   }
 
 
@@ -43,7 +44,7 @@ export class RoomsService {
       console.log(this.newMessage);
     });
 
-    
+
     return this.message$.asObservable();
   };
 
@@ -53,7 +54,20 @@ export class RoomsService {
     });
     return this.user$.asObservable();
   };
-  
+
+  public getUserDisconnect = () => {
+    this.socket.on('user_disconnect', (user:string) => {
+      this.userDisconnect$.next(user);
+    });
+    return this.userDisconnect$.asObservable();
+  }
+
+  public emitDisconnection (){
+    this.socket.emit('disconnected', this.socket.id);
+    this.socket.disconnect();
+    console.log("disconnected");
+  }
+
   getRooms() { return [...this.rooms]; }
 
   getRoomUpdateListener() {

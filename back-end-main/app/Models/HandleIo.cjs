@@ -8,7 +8,7 @@ module.exports = class HandleIo{
     constructor(io)
     {
         this.mIo = io;
-        this.usernames = {};
+        this.usernames = [];
         this.userRooms = {};
         this.mIo.on('connection', async (socket) => {
             this.usernames[socket.id] = await gen.generateName();
@@ -46,8 +46,14 @@ module.exports = class HandleIo{
             console.log(this.CreateRoom(id));
         });
 
-        this.mIo.on('disconnect', (socket) => {
-            this.mIo.in(socket.handshake.query.roomCode).emit("user_disconnect", this.usernames[socket.id]);
+        socket.on('disconnected', (id) => {
+            console.log("disconnecting user");
+            console.log(this.usernames);
+            console.log(id);
+            this.mIo.in(socket.handshake.query.roomCode).emit("user_disconnect", this.usernames[id]);
+            // this.usernames = this.usernames.filter(e => e !== this.usernames[id]);
+            //this.usernames.splice(this.usernames.indexOf(id), 0);
+            console.log(this.usernames);
           });
     }
 
