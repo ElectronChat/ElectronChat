@@ -24,6 +24,7 @@ import { UserComponent } from './rooms/room/user/user.component';
 import { UserListComponent } from './rooms/room/userList/userList.component';
 import { MessageListComponent } from './rooms/room/messageList/messageList.component';
 import { RoomBannerComponent } from './rooms/room/roomBanner/roomBanner.component';
+import { AboutUsComponent } from './aboutUs/aboutUs.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { RoomBannerComponent } from './rooms/room/roomBanner/roomBanner.componen
     UserComponent,
     UserListComponent,
     MessageListComponent,
-    RoomBannerComponent
+    RoomBannerComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
