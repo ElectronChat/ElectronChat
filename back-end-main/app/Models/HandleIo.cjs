@@ -48,11 +48,8 @@ module.exports = class HandleIo{
 
         socket.on('disconnected', (id) => {
             console.log("disconnecting user");
-            console.log(this.usernames);
-            console.log(id);
             this.mIo.in(socket.handshake.query.roomCode).emit("user_disconnect", this.usernames[id]);
             delete this.usernames[id.toString()];
-            console.log(this.usernames);
           });
     }
 
