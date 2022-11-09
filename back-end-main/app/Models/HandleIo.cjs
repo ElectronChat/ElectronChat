@@ -8,7 +8,7 @@ module.exports = class HandleIo{
     constructor(io)
     {
         this.mIo = io;
-        this.usernames = [];
+        this.usernames = {};
         this.userRooms = {};
         this.mIo.on('connection', async (socket) => {
             this.usernames[socket.id] = await gen.generateName();
