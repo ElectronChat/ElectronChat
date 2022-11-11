@@ -1,5 +1,6 @@
 import { Injectable, OnDestroy } from "@angular/core";
 import { Socket } from "ngx-socket-io";
+import { AES } from 'crypto-js';
 import { map } from "rxjs/operators";
 
 import { io } from "socket.io-client";
