@@ -10,8 +10,8 @@ const con = mysql.createConnection({
 class SqlServer {
 
     connect() {
-        con.connect(function (err) {
-            if (err) throw err;
+        con.connect(function (error) {
+            if (error) throw error;
             console.log("SQL Connected!");
         });
     }
@@ -29,9 +29,9 @@ class SqlServer {
         })
     }
     CreateTable(name) {
-            var sql = "CREATE TABLE " + name + "(id INT AUTO_INCREMENT PRIMARY KEY, user VARCHAR(255), message VARCHAR(255), room VARCHAR(255))";
+            const sql = "CREATE TABLE " + name + "(id INT AUTO_INCREMENT PRIMARY KEY, user VARCHAR(255), message VARCHAR(255), room VARCHAR(255))";
             con.query(sql, function (error, result) {
-                if (err) throw error;
+                if (error) throw error;
                 console.log("Table created");
             });
 
@@ -39,7 +39,7 @@ class SqlServer {
         }
 
         DropTable(name){
-            var sql = "DROP Table " + name;
+            const sql = "DROP Table " + name;
             con.query(sql, function (error, result) {
                 console.log("Table Deleted");
             });
