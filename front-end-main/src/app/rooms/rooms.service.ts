@@ -15,6 +15,7 @@ export class RoomsService {
   public roomcode = "";
   public key = "";
   private encryptedRoomcode = "";
+  private encryptedString = "";
   private rooms: RoomCreateJoin[] = [];
   private roomsUpdated = new Subject<RoomCreateJoin[]>();
   public socket: any;
@@ -36,10 +37,14 @@ export class RoomsService {
   }
 
   public sendMessage(message: any) {
-    var encryptedMessage = AES.encrypt(message, this.key).toString();
-    console.log("Sending message (string): " + encryptedMessage.toString());
-    console.log("Sending message (): " + encryptedMessage);
-    this.socket.emit('chat message', encryptedMessage);
+
+    var encryptedMessage = AES.encrypt(message, this.key);
+    this.encryptedString = encryptedMessage.toString();
+
+    console.log("Sending message (encryptedString): " + this.encryptedString);
+    console.log("Sending message (encryptedMessage): " + encryptedMessage);
+
+    this.socket.emit('chat message', this.encryptedString);
   }
 
   public getNewMessage = () => {
@@ -47,8 +52,12 @@ export class RoomsService {
       this.message$.next(message);
 
       console.log("New message (string): " + message);
+
       var decryptedMessage = AES.decrypt(message, this.key);
-      this.newMessage = decryptedMessage.toString(CryptoJS.enc.Utf8);
+
+      console.log("New message (decryptedMessage): " + decryptedMessage);
+      console.log("New message (decryptedMessage ToString): " + decryptedMessage.toString());
+      this.newMessage = decryptedMessage.toString();
     });
 
 
