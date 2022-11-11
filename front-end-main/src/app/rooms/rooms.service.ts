@@ -43,8 +43,9 @@ export class RoomsService {
     this.socket.on('chat message', (message:any) => {
       this.message$.next(message);
 
-      this.newMessage = message;
-      console.log(this.newMessage);
+      console.log("New message (string): " + message);
+      var decryptedMessage = AES.decrypt(message, this.key);
+      this.newMessage = decryptedMessage.toString(CryptoJS.enc.Utf8);
     });
 
 
