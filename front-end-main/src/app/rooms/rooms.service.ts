@@ -13,6 +13,7 @@ export class RoomsService {
   public user$: BehaviorSubject<string> = new BehaviorSubject('');
   public newMessage = "";
   public roomcode = "";
+  public key = "";
   private encryptedRoomcode = "";
   private rooms: RoomCreateJoin[] = [];
   private roomsUpdated = new Subject<RoomCreateJoin[]>();
