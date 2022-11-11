@@ -28,7 +28,8 @@ export class RoomsService {
   }
 
   public setRoom(room: string){
-    this.roomcode = room;
+    this.encryptedRoomcode = AES.encrypt(room, room).toString();
+    this.key = room; // set key to roomcode for encryption and decryption
   }
 
   public sendMessage(message: any) {
