@@ -33,7 +33,10 @@ export class RoomsService {
   }
 
   public sendMessage(message: any) {
-    this.socket.emit('chat message', message);
+    var encryptedMessage = AES.encrypt(message, this.key).toString();
+    console.log("Sending message (string): " + encryptedMessage.toString());
+    console.log("Sending message (): " + encryptedMessage);
+    this.socket.emit('chat message', encryptedMessage);
   }
 
   public getNewMessage = () => {
