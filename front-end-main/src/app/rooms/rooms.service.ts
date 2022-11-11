@@ -16,7 +16,7 @@ export class RoomsService {
   private roomsUpdated = new Subject<RoomCreateJoin[]>();
   public socket: any;
   constructor() {
-    
+
   }
 
 
@@ -24,7 +24,7 @@ export class RoomsService {
   public setupSocket()
   {
     this.socket = io('http://localhost:3000',
-    {query: {roomCode: this.roomcode}});
+    {query: {roomCode: this.encryptedRoomcode}});
   }
 
   public setRoom(room: string){
@@ -43,7 +43,7 @@ export class RoomsService {
       console.log(this.newMessage);
     });
 
-    
+
     return this.message$.asObservable();
   };
 
@@ -53,7 +53,7 @@ export class RoomsService {
     });
     return this.user$.asObservable();
   };
-  
+
   getRooms() { return [...this.rooms]; }
 
   getRoomUpdateListener() {
