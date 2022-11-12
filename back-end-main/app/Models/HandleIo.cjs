@@ -11,6 +11,19 @@ Sqlhandler.connect();
 //Sqlhandler.DeleteAll();
 //Sqlhandler.CreateTable("ChatRoom")
 //Sqlhandler.DropTable("chat");
+(async () => {
+    const test = await Sqlhandler.getRoomMessages('bill');
+    console.log(test);
+})();
+
+(async () => {
+    const test1 = await Sqlhandler.getUserMessages('Upset_Chungus');
+    console.log(test1);
+})();
+
+//Sqlhandler.getUserMessages('Specific_Chungus');
+//Sqlhandler.DeleteRoomMessages('jfdsa')
+//Sqlhandler.DeleteUserMessages('Specific_Chungus');
 
 module.exports = class HandleIo{
     constructor(io)
