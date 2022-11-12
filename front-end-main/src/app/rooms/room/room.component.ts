@@ -92,6 +92,7 @@ export class RoomComponent implements OnInit, OnDestroy {
   // Unsuscribes from the room's service and reloads page so nothing is saved
   ngOnDestroy() {
     // this.postsSub.unsubscribe();
+    this.roomsService.emitDisconnection();
     this.roomServ.unsubscribe();
     this.roomsService.socket.removeAllListeners('chat message');
     location.reload();
