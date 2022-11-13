@@ -1,28 +1,32 @@
-<room-banner [roomsService]="this.roomsService" [numUsers]="this.getUserListLength()" [roomCode]="this.getRoomCode()"></room-banner>
+<app-header [roomsService]="this.roomsService"></app-header>
+<div class="room-margin">
+  <room-banner [roomsService]="this.roomsService" [numUsers]="this.getUserListLength()" [roomCode]="this.getRoomCode()"></room-banner>
 
-<div class="viewportParent">
-  <user-list [userList]="userList"></user-list>
-  <div class="cdkViewportWrapper">
-  <div id="msg" onload="onLoad()" class="msgViewport" style="overflow: auto;">
-    <div  class="" *ngFor="let message of messageList">
-      <message *ngIf="message != ''" [message]="message" [myId]="this.roomsService.socket.id"></message>
+  <div class="viewportParent">
+    <user-list [userList]="userList"></user-list>
+    <div class="cdkViewportWrapper">
+      <div id="msg" onload="onLoad()" class="msgViewport" style="overflow: auto;">
+        <div  class="" *ngFor="let message of messageList">
+          <message *ngIf="message != ''" [message]="message" [myId]="this.roomsService.socket.id"></message>
+        </div>
+
+      </div>
     </div>
 
   </div>
-</div>
+  <div class="input">
+    <form (submit)="sendMessage(roomForm)" #roomForm="ngForm">
+      <mat-form-field class="formField">
+        <input matInput type="text" name="new_message" ngModel required minLength="3"
+        placeholder="Enter message"
+        #new_message ="ngModel">
+        <mat-error *ngIf="new_message.invalid">Please enter a message.</mat-error>
+      </mat-form-field>
+      <button
+      mat-raised-button
+      type="submit"
+      [disabled]="new_message.invalid">Send</button>
+    </form>
+  </div>
 
-</div>
-<div class="input">
-  <form (submit)="sendMessage(roomForm)" #roomForm="ngForm">
-    <mat-form-field class="formField">
-      <input matInput type="text" name="new_message" ngModel required minLength="3"
-      placeholder="Enter message"
-      #new_message ="ngModel">
-      <mat-error *ngIf="new_message.invalid">Please enter a message.</mat-error>
-    </mat-form-field>
-    <button
-    mat-raised-button
-    type="submit"
-    [disabled]="new_message.invalid">Send</button>
-  </form>
 </div>

@@ -26,3 +26,8 @@ button {
   transform: scale(2);
 }
 
+.card-align
+{
+  width:90%;
+  margin-inline: 3%;
+}

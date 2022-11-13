@@ -1,7 +1,8 @@
+<app-header></app-header>
 <div class="iamgeParent">
   <img class="images" src="../../../assets/imgs/electron.png">
 </div>
-<mat-card>
+<mat-card class="card-align">
   <form (submit)="onJoinCreateRoom(roomForm)" #roomForm="ngForm">
     <mat-form-field>
       <input matInput type="text" name="roomCode" ngModel required minLength="3" placeholder="Enter room code" #roomCode ="ngModel">
