@@ -1,4 +1,5 @@
 import { Injectable, OnDestroy } from "@angular/core";
+import { AES } from 'crypto-js';
 import { Socket } from "ngx-socket-io";
 import { map } from "rxjs/operators";
 
@@ -33,11 +34,19 @@ export class RoomsService {
   }
 
   public sendMessage(message: any) {
-    this.socket.emit('chat message', message);
+    console.log("before encrypt");
+    var encryptedM = AES.encrypt(message, this.roomcode);
+    console.log("past encrypt");
+    this.socket.emit('chat message', encryptedM.toString());
+    console.log("past emit");
   }
 
   public getNewMessage = () => {
     this.socket.on('chat message', (message:any) => {
+      console.log("past get");
+      var decryptedM = AES.decrypt(message, this.roomcode);
+      console.log("past decrypt");
+      console.log(decryptedM.toString(CryptoJS.enc.Utf8));
       this.message$.next(message);
 
       this.newMessage = message;
