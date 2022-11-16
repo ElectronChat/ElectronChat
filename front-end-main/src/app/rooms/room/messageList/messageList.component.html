@@ -1,7 +1,7 @@
 <div class="cdkViewportWrapper">
   <cdk-virtual-scroll-viewport [itemSize]="50" class="msgViewport">
     <div #virtualScroll *cdkVirtualFor="let message of messageList">
-      <message [messageText]="message"></message>
+      <message *ngIf="message != ''" [message]="message" [myId]="myId"></message>
     </div>
   </cdk-virtual-scroll-viewport>
 </div>

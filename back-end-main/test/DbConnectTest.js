@@ -1,10 +1,11 @@
 const assert = require('chai').assert;
 const DbConnect = require('../app/Models/DbConnect');
-
+const interface = require('../app/Models/SqlInterface')
 describe('DbConnector', function() {
     const ip = '127.0.0.1';
     const port = '8080';
-    let connector = new DbConnect(port, ip);
+    let inter = new interface(port,ip);
+    let connector = new DbConnect(inter);
 
     describe("getPort", function() {
       it('getPort should return 8080', function(){
