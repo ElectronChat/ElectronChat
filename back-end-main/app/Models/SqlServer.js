@@ -65,8 +65,6 @@ class SqlServer {
         });
     }
 
-
-
      getUserMessages(name) {
         return new Promise((resolve, reject) => {
             let sql = "SELECT user, message, room FROM ChatRoom WHERE user = '" + name + "' ";

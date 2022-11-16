@@ -7,10 +7,7 @@ const message = require("./Message");
 const testsql = require("./SqlServer")
 let Sqlhandler = new testsql();
 Sqlhandler.connect();
-//Sqlhandler.ShowDatabase();
-//Sqlhandler.DeleteAll();
-//Sqlhandler.CreateTable("ChatRoom")
-//Sqlhandler.DropTable("chat");
+
 (async () => {
     const test = await Sqlhandler.getRoomMessages('bill');
     console.log(test);
@@ -20,10 +17,6 @@ Sqlhandler.connect();
     const test1 = await Sqlhandler.getUserMessages('Upset_Chungus');
     console.log(test1);
 })();
-
-//Sqlhandler.getUserMessages('Specific_Chungus');
-//Sqlhandler.DeleteRoomMessages('jfdsa')
-//Sqlhandler.DeleteUserMessages('Specific_Chungus');
 
 module.exports = class HandleIo{
     constructor(io)
