@@ -44,6 +44,8 @@ setup your work space to run the server for this webapp and, in your browser, us
 Before anything, make sure you have all the dependencies installed. Currently the only thing you need installed is node.js; prefferably LTS version 16.17.X.
 
 # setup
+## First steps
+Before anything else make sure to clone this repository to your local machine. If you have git installed you can use "git clone https://github.com/ElectronChat/ElectronChat.git" to download this repo. Otherwise, you can download the project as a zip and extract it on your machine.
 ## The easy way
 If you have Python3 installed then you can run a provided script to install, build, and deploy the service. 
 If you do not then you can install it here: https://www.python.org/downloads/
