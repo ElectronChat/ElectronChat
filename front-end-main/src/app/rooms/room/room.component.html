@@ -1,17 +1,17 @@
-<room-banner [numUsers]="this.getUserListLength()" [roomCode]="this.getRoomCode()"></room-banner>
+<room-banner [roomsService]="this.roomsService" [numUsers]="this.getUserListLength()" [roomCode]="this.getRoomCode()"></room-banner>
 
 <div class="viewportParent">
   <user-list [userList]="userList"></user-list>
   <div class="cdkViewportWrapper">
   <div id="msg" onload="onLoad()" class="msgViewport" style="overflow: auto;">
     <div  class="" *ngFor="let message of messageList">
-      <message [message]="message"></message>
+      <message *ngIf="message != ''" [message]="message" [myId]="this.roomsService.socket.id"></message>
     </div>
 
   </div>
 </div>
 
-</div> 
+</div>
 <div class="input">
   <form (submit)="sendMessage(roomForm)" #roomForm="ngForm">
     <mat-form-field class="formField">

@@ -9,9 +9,17 @@ import { Component, Input } from "@angular/core";
 export class MessageComponent {
   ngOnInit()
   {
-    console.log("in load");
     let div = document.getElementById("msg");
     if (div != null) {
+      console.log("in load");
+      div.scrollTop = div.scrollHeight;
+    }
+  }
+  ngAfterViewChecked()
+  {
+    let div = document.getElementById("msg");
+    if (div != null) {
+      console.log("in load");
       div.scrollTop = div.scrollHeight;
     }
   }

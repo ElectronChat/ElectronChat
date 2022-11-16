@@ -19,12 +19,13 @@ export class RoomComponent implements OnInit, OnDestroy {
   // posts: RoomCreateJoin[] = [];
   private roomServ: Subscription = new Subscription;
   private userServ: Subscription = new Subscription;
+  private userDisconnect: Subscription = new Subscription;
   private roomCode: string = "";
 
   constructor(public roomsService: RoomsService, private route: ActivatedRoute) {}
   // Constructor for component. Subscribes to io for messages. When new message is acquired,
   // will append to current list
-  
+
   onLoad()
   {
 
@@ -63,6 +64,19 @@ export class RoomComponent implements OnInit, OnDestroy {
       console.log("pass")
     }
    });
+
+   this.userDisconnect = this.roomsService.getUserDisconnect().subscribe((user:string) => {
+    console.log(user);
+    if (this.userList.includes(user.toString()))
+    {
+      const indexToDelete = this.userList.indexOf(user.toString(), 0);
+      // if (index > -1) {
+      //   this.userList.splice(index, 1);
+      // }
+      this.userList = this.userList.filter((item, index) => index !== indexToDelete)
+    }
+    console.log(this.userList);
+   })
 
   }
 

@@ -11,8 +11,8 @@ module.exports = class HandleIo{
         this.usernames = {};
         this.userRooms = {};
         this.mIo.on('connection', async (socket) => {
-            this.usernames[socket.id] = await gen.generateName();
-            this.userRooms[socket.id] = socket.handshake.query.roomCode;
+            this.usernames[socket.id.toString()] = await gen.generateName();
+            this.userRooms[socket.id.toString()] = socket.handshake.query.roomCode;
             console.log(this.usernames);
             socket.join(socket.handshake.query.roomCode);
             this.mSocket = socket;
@@ -46,8 +46,10 @@ module.exports = class HandleIo{
             console.log(this.CreateRoom(id));
         });
 
-        this.mIo.on('disconnect', (socket) => {
-            this.mIo.in(socket.handshake.query.roomCode).emit("user_disconnect", this.usernames[socket.id]);
+        socket.on('disconnected', (id) => {
+            console.log("disconnecting user");
+            this.mIo.in(socket.handshake.query.roomCode).emit("user_disconnect", this.usernames[id]);
+            delete this.usernames[id.toString()];
           });
     }
 
