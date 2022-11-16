@@ -46,7 +46,7 @@ export class RoomsService {
       console.log("past get");
       var decryptedM = AES.decrypt(message, this.roomcode);
       console.log("past decrypt");
-      console.log(decryptedM.toString(CryptoJS.enc.Utf8));
+      console.log(decryptedM.toString(AES.enc.Utf8));
       this.message$.next(message);
 
       this.newMessage = message;
