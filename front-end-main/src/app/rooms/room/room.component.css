@@ -18,6 +18,13 @@ button:disabled {
   color:aliceblue;
 }
 
+.room-margin
+{
+  width:90%;
+  margin-inline: 10%;
+}
+
+
 .input{
   margin-top: 20px;
   width: 83.5%;

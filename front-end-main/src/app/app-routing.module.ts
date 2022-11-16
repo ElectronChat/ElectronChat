@@ -9,7 +9,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch:'full'},
   {path: 'home', component:RoomCreateJoinComponent},
   {path: 'room/:id', canDeactivate: [CanDeactivateGuard], component:RoomComponent},
-  {path: 'about-us', component:AboutUsComponent}
+  {path: 'about-us', component:AboutUsComponent},
 ];
 
 @NgModule({
