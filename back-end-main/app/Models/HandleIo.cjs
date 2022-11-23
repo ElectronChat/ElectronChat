@@ -8,6 +8,7 @@ const testsql = require("./SqlServer")
 let Sqlhandler = new testsql();
 Sqlhandler.connect();
 
+/*
 (async () => {
     const test = await Sqlhandler.getRoomMessages('bill');
     console.log(test);
@@ -17,7 +18,7 @@ Sqlhandler.connect();
     const test1 = await Sqlhandler.getUserMessages('Upset_Chungus');
     console.log(test1);
 })();
-
+*/
 module.exports = class HandleIo{
     constructor(io)
     {
