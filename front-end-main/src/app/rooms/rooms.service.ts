@@ -112,30 +112,37 @@ export class RoomsService {
   }
 }
 
+// function to encrypt messages using a known key that will be used on the other side (symmetric key encryption)
 function encrypt(message: string, pass: string)
 {
+  // define some options for the encryption
   var key = enc.Utf8.parse(pass);
   var salt = lib.WordArray.random(128 / 8);
-  var iv = lib.WordArray.random(128 / 8);
-  var key_salted = PBKDF2(key, salt, {keySize: 128/8, iterations:500});
-  var options = { iv: iv, mode: mode.CBC, padding: pad.Pkcs7}
-  var message_parsed = enc.Utf8.parse(message);
-  var encrypted = AES.encrypt(message_parsed, key_salted, options);
-  var encrypted_bin = enc.Hex.stringify(salt) + ',' + enc.Hex.stringify(iv) + ',' + encrypted;
+  var iv = lib.WordArray.random(128 / 8); // initial value is needed since it has to be the same on the other side
 
+  // salting the key so even though the key is known, there cannot be a man in the middle that knows it
+  var key_salted = PBKDF2(key, salt, {keySize: 128/8, iterations:500});
+  var options = { iv: iv, mode: mode.CBC, padding: pad.Pkcs7} // set the options so the encrypt method can use them
+  var message_parsed = enc.Utf8.parse(message);
+  var encrypted = AES.encrypt(message_parsed, key_salted, options); // encrypt
+  var encrypted_bin = enc.Hex.stringify(salt) + ',' + enc.Hex.stringify(iv) + ',' + encrypted;  // attach the salting value, the initial value,
+                                                                                                // and the encrypted text so the options can be remade and decrypted
   return encrypted_bin;
 }
 
+// function to decrypt encrypted message that are passed in using a known key
 function decrypt(encrypted: any, key_org: string)
 {
-  var split_msg = encrypted.split(',');
-  var salt = enc.Hex.parse(split_msg[0]);
-  var iv = enc.Hex.parse(split_msg[1]);
-  var encrypted_bin = enc.Base64.parse(split_msg[2]);
+  var split_msg = encrypted.split(','); // split the attached values
+  var salt = enc.Hex.parse(split_msg[0]); // extract salt value and parse from the Hex hash made before
+  var iv = enc.Hex.parse(split_msg[1]); // extract the initial value the same way
+  var encrypted_bin = enc.Base64.parse(split_msg[2]); // extract encrypted message
+
+
   var pass = enc.Utf8.parse(key_org);
-  var key = PBKDF2(pass, salt, {keySize: 128 / 8, iterations: 500});
+  var key = PBKDF2(pass, salt, {keySize: 128 / 8, iterations: 500}); // create same salted password as used in the encryption method
   var msg = enc.Base64.stringify(encrypted_bin);
-  var options = {iv: iv, mode: mode.CBC, padding: pad.Pkcs7};
-  var decrypted_msg = AES.decrypt(msg, key, options);
-  return decrypted_msg;
+  var options = {iv: iv, mode: mode.CBC, padding: pad.Pkcs7}; // set same options as before
+  var decrypted_msg = AES.decrypt(msg, key, options); // decrypt
+  return decrypted_msg; // boom done
 }
