@@ -20,7 +20,7 @@ else:
     File.close()
     File = open("./front-end-main/.env", "w")
     File.write("host=" + ip + "\nport=" + port)
-    File.close()
+    File.close() 
     os.environ["host"] = ip
     os.environ["port"] = port
 os.chdir("./back-end-main")
@@ -28,6 +28,13 @@ os.system("npm install")
 os.chdir("../front-end-main")
 os.system("npm install")
 os.system("npm install -g @angular/cli")
+os.system("npm i --save-dev @types/crypto-js")
+os.chdir(os.getcwd() + "/src/environments")
+env = open('./environment.ts', 'w')
+env.write("export const environment = {\n" + 
+  "production: true,\n" + "PORT:'" + port + "',\nHOST:'" + ip + "'\n};")
+env.close()
+os.chdir("../../")
 os.system("ng build")
 os.chdir("../back-end-main")
 print("Enter in your browser " + ip + ":" + port + " to access built website.")
