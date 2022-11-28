@@ -7,6 +7,7 @@ import { map } from "rxjs/operators";
 import { io } from "socket.io-client";
 import { BehaviorSubject, Subject } from 'rxjs';
 import { RoomCreateJoin } from "./room-create-join.model";
+import { environment } from "src/environments/environment";
 
 @Injectable({providedIn: 'root'})
 export class RoomsService {
@@ -19,6 +20,8 @@ export class RoomsService {
   private roomsUpdated = new Subject<RoomCreateJoin[]>();
   public socket: any;
   private options: any;
+  private host = environment.HOST;
+  private port = environment.PORT;
   constructor() {
 
   }
@@ -27,7 +30,10 @@ export class RoomsService {
 
   public setupSocket()
   {
-    this.socket = io('http://localhost:3000',
+    console.log(this.host);
+    console.log(this.port);
+    this.socket = io('http://' + this.host + ':' + this.port,
+    //this.socket = io('http://localhost:3000',
     {query: {roomCode: this.roomcode}});
   }
 
