@@ -26,8 +26,6 @@ export class RoomsService {
 
   }
 
-
-
   public setupSocket()
   {
     console.log(this.host);
