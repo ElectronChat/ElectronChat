@@ -16,9 +16,7 @@ export class RoomCreateJoinComponent {
 
   onJoinCreateRoom(form: NgForm) {
     if (form.invalid) { return; }
-    //this.location.replaceState(`/room/${form.value.roomCode}`);
     this._router.navigateByUrl(`/room/${form.value.roomCode}`)
-    //this.roomIndex = this.roomsService.getRooms().length - 1;
     form.resetForm();
   }
 

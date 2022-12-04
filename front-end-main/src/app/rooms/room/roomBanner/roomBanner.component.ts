@@ -17,7 +17,6 @@ export class RoomBannerComponent {
   {
     if (this.roomsService != null)
     {
-      //this.roomsService.emitDisconnection();
       this._router.navigateByUrl(`/home`);
     }
   }

@@ -1,5 +1,4 @@
 import { Injectable, OnDestroy } from "@angular/core";
-//import 'crypto-js';
 import { AES , mode, pad, lib, enc, PBKDF2} from 'crypto-js';
 import { Socket } from "ngx-socket-io";
 import { map } from "rxjs/operators";
@@ -31,7 +30,6 @@ export class RoomsService {
     console.log(this.host);
     console.log(this.port);
     this.socket = io('http://' + this.host + ':' + this.port,
-    //this.socket = io('http://localhost:3000',
     {query: {roomCode: this.roomcode}});
   }
 
@@ -40,43 +38,16 @@ export class RoomsService {
   }
 
   public sendMessage(message: string) {
-    // console.log("before encrypt");
-    // var encryptedM = AES.encrypt(message, this.roomcode);
-    // console.log("past encrypt");
-    // console.log(encryptedM);
-    // var d = AES.decrypt(encryptedM, this.roomcode);
-    // console.log(d.toString(enc.Utf8));
-    // this.socket.emit('chat message', enc.Hex.stringify(encryptedM.ciphertext));
     var encryptedM = encrypt(message, this.roomcode);
     this.socket.emit('chat message', encryptedM);
-    // console.log(encryptedM);
-    // console.log("past emit");
   }
 
   public getNewMessage = () => {
     this.socket.on('chat message', (message:any) => {
-      // console.log("past get");
-      // console.log(message);
-      // var hash = enc.Hex.parse(message['message']);
-      // console.log("hash");
-      // console.log(hash);
-      // var decryptedM = AES.decrypt(message['message'], this.roomcode);
-      // //var decryptedM = AES.decrypt(enc.Hex.stringify(hash), this.roomcode);
-      // message['message'] = AES.decrypt(message['message'], this.roomcode).toString();
-      // console.log("past decrypt");
-      // console.log(decryptedM);
-      // console.log(decryptedM.toString)
-      // console.log(message["message"]);
-      // console.log(message);
-      // console.log(decryptedM.toString(enc.Utf16));
-      // console.log(decryptedM.toString(enc.Hex));
-      // console.log(decryptedM.toString(enc.Utf8));
-      //console.log("past log");
       message['message'] = decrypt(message['message'], this.roomcode).toString(enc.Utf8);
       this.message$.next(message);
 
       this.newMessage = message;
-      //console.log(this.newMessage);
     });
 
 
