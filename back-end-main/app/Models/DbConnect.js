@@ -16,7 +16,7 @@ class DbConnector{
 
     getAllMsgs(roomID)
     {
-        return this.mInterface.getAllQueries(roomID);
+        return this.mInterface.getAllMsgs(roomID);
 
     }
 
@@ -27,12 +27,12 @@ class DbConnector{
 
     sendMsg(msg)
     {
-        this.mInterface.submitQuery(msg, "hello_world", "James");
+        this.mInterface.sendMsg(msg, "hello_world", "James");
     }
 
     deleteMsg(msg)
     {
-        this.mInterface.deleteQuery(msg);
+        this.mInterface.deleteMsg(msg);
     }
 }
 // exports class DbConnector to be used by other .js files 
