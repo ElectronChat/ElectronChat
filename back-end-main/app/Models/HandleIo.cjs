@@ -4,10 +4,11 @@ const NameGenerator = require("./NameGenerator")
 let gen = new NameGenerator();
 const message = require("./Message");
 
-const testsql = require("./SqlServer")
-let Sqlhandler = new testsql();
-Sqlhandler.connect();
+//const testsql = require("./SqlServer")
+//let Sqlhandler = new testsql();
+//Sqlhandler.connect();
 
+/*
 (async () => {
     const test = await Sqlhandler.getRoomMessages('bill');
     console.log(test);
@@ -17,7 +18,7 @@ Sqlhandler.connect();
     const test1 = await Sqlhandler.getUserMessages('Upset_Chungus');
     console.log(test1);
 })();
-
+*/
 module.exports = class HandleIo{
     constructor(io)
     {
@@ -51,7 +52,7 @@ module.exports = class HandleIo{
     listen(socket)
     {
         socket.on( "chat message", (msg) => {
-            Sqlhandler.PutinTable("ChatRoom",this.usernames[socket.id],msg,this.userRooms[socket.id])
+ //           Sqlhandler.PutinTable("ChatRoom",this.usernames[socket.id],msg,this.userRooms[socket.id])
                 console.log(socket.user + ": " + msg);
                 this.mIo.in(socket.handshake.query.roomCode).emit("chat message", new message(this.usernames[socket.id], this.MessageRecieved(msg), socket.id));
                 console.log(socket.id);

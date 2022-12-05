@@ -11,12 +11,21 @@ import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
   styleUrls: ['./room.component.css']
 })
 export class RoomComponent implements OnInit, OnDestroy {
+  /**
+   * @type {ViewChild(CdkVirtualScrollViewport)}
+   */
   @ViewChild(CdkVirtualScrollViewport) public virtualScrollViewport?: CdkVirtualScrollViewport;
+
+  /**
+   * @type {string[]} array to hold current messages in room
+   */
   messageList: string[] = [];
-  //messageList: string[] = ["Random","Random", "James","Random","Random", "James","Phil","Phil","Random","Random", "James","Phil","Hello","Frgughugehgueugeugrehgurehgeughreughreughreugrheugrehgurehgruehgreughreughreugrehugrehgruehgreughreugrehgurehgreugrehgurehgreugrheugehugr"];
+
+  /**
+   * @type {string[]} array to hold current users in room
+   */
   userList: string[] = [];
 
-  // posts: RoomCreateJoin[] = [];
   private roomServ: Subscription = new Subscription;
   private userServ: Subscription = new Subscription;
   private userDisconnect: Subscription = new Subscription;
@@ -31,6 +40,10 @@ export class RoomComponent implements OnInit, OnDestroy {
 
   }
 
+  /**
+   * Called when component is constructed
+   * handles socket setup, message listening, and listening for user connections and disconnections
+   */
   ngOnInit() {
     this.route.params.subscribe(params=>{
       this.roomCode = params['id'];
@@ -41,8 +54,8 @@ export class RoomComponent implements OnInit, OnDestroy {
     this.roomsService.setupSocket();
 
     this.roomServ = this.roomsService.getNewMessage().subscribe((message: any) => {
-      //this.messageList.push(message);
       this.messageList = [...this.messageList, message];
+
    });
 
 
@@ -54,59 +67,59 @@ export class RoomComponent implements OnInit, OnDestroy {
     }
     if(!this.userList.includes(user.toString()))
     {
-      console.log(user.toString());
-
       this.userList = [ ...this.userList, user.toString()];
-      console.log(this.userList);
-    }
-    else
-    {
-      console.log("pass")
     }
    });
 
    this.userDisconnect = this.roomsService.getUserDisconnect().subscribe((user:string) => {
-    console.log(user);
     if (this.userList.includes(user.toString()))
     {
       const indexToDelete = this.userList.indexOf(user.toString(), 0);
-      // if (index > -1) {
-      //   this.userList.splice(index, 1);
-      // }
       this.userList = this.userList.filter((item, index) => index !== indexToDelete)
     }
-    console.log(this.userList);
    })
 
   }
 
-  // Called when a message is typed and send button is pressed
-  // grabs message and sends to server. Clears input form
+  /** Called when a message is typed and send button is pressed
+  * grabs message and sends to server. Clears input form
+  */
   sendMessage(form: NgForm) {
     if (form.invalid) {return;}
     this.roomsService.sendMessage(form.value.new_message);
     form.resetForm();
   }
 
-  // Will be called when the room component is destroyed by reloading or navigating to new page
-  // Unsuscribes from the room's service and reloads page so nothing is saved
+  /** Will be called when the room component is destroyed by reloading or navigating to new page
+  * Unsuscribes from the room's service and reloads page so nothing is saved
+  */
   ngOnDestroy() {
-    // this.postsSub.unsubscribe();
     this.roomsService.emitDisconnection();
     this.roomServ.unsubscribe();
     this.roomsService.socket.removeAllListeners('chat message');
     location.reload();
   }
 
+  /**
+   * Confirms if user wants to leave room
+   * @returns {string} window close confirmation */
   canExit() {
     return confirm('Leaving the Room with delete all messages. Are you sure?')
   }
 
+  /**
+   *
+   * @returns this.userlist.length
+   */
   getUserListLength()
   {
     return this.userList.length;
   }
 
+  /**
+   *
+   * @returns this.roomCode
+   */
   getRoomCode()
   {
     return this.roomCode;
