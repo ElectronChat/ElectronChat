@@ -1,6 +1,6 @@
 const assert = require('chai').assert;
 const DbConnect = require('../app/Models/DbConnect');
-const interface = require('../app/Models/SqlInterface')
+const interface = require('../app/Models/SqlInterface_mock')
 describe('DbConnector', function() {
     const ip = '127.0.0.1';
     const port = '8080';
