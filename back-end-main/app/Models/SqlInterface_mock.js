@@ -34,22 +34,22 @@ class SqlInterface_mock{
         return this.IP;
     }
 
-    getAllQueries(roomID)
+    getAllMsgs(roomID)
     {
         return this.mMockMessages.filter(item=>item[2].includes(roomID));
     }
 
-    getQuery(msgID)
+    getMsg(msgID)
     {
         return this.mMockMessages.filter(item=>item[3].includes(msgID));
     }
 
-    submitQuery(msg, room, user)
+    sendMsg(msg, room, user)
     {
         this.mMockMessages.push([user, msg, room, 1]);
     }
 
-    deleteQuery(id)
+    deleteMsg(id)
     {
         this.mMockMessages =  this.mMockMessages.filter(item=>!item[3].includes(id));
     }
