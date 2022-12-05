@@ -21,7 +21,7 @@ describe('DbConnector', function() {
 
     describe("getAllMsgs", function() {
       it('getALLMsgs should return true', function(){
-        assert.equal(connector.getAllMsgs().length, 10);
+        assert.equal(connector.getAllMsgs('hello_world').length, 8);
       })
     })
 
