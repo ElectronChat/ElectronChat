@@ -1,10 +1,11 @@
 const mysql = require('mysql');
 
 const con = mysql.createConnection({
-    host: "sql9.freesqldatabase.com",
-    user: "sql9559593",
-    password: "q4Yj3P13ug",
-    database: "sql9559593"
+    host: "electronchat.c6oq2teq1gq9.us-east-1.rds.amazonaws.com",
+    user: "Big_Chungus",
+    password: "thehello123",
+    database: "ElectronChatDb",
+    port:3306
 });
 
 
@@ -87,7 +88,6 @@ class SqlServer {
             console.log(result);
         })
     }
-
 
 }
 module.exports = SqlServer;
