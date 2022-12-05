@@ -27,19 +27,15 @@ describe('DbConnector', function() {
 
     describe("getMsg", function() {
       it('getMsgs should return true', function(){
-        assert.equal(connector.getMsg(), true);
+        assert.equal(connector.getMsg(0), 'Is anyone here?');
       })
     })
 
-    describe("sendMsg", function() {
-      it('sendMsg should return true', function(){
-        assert.equal(connector.sendMsg(), true);
-      })
-    })
 
     describe("deleteMsg", function() {
       it('deleteMsg should return true', function(){
-        assert.equal(connector.deleteMsg(), true);
+          connector.deleteMsg(0)
+        assert.equal(connector.getMsg(0), 'Yeas');
       })
     })
 })
