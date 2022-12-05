@@ -7,7 +7,15 @@ import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
   styleUrls: ['./userList.component.css']
 })
 export class UserListComponent {
+  /**
+   * @type {ViewChild(CdkVirtualScrollViewport)}
+   */
   @ViewChild(CdkVirtualScrollViewport) public virtualScrollViewport?: CdkVirtualScrollViewport;
+
+  /**
+   * @type {string[]}
+   */
   @Input() userList!: string[];
+
   constructor() {}
 }

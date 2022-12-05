@@ -25,10 +25,12 @@ else:
     os.environ["port"] = port
 os.chdir("./back-end-main")
 os.system("npm install")
+os.system("npm install --save-dev jsdoc")
 os.chdir("../front-end-main")
 os.system("npm install")
 os.system("npm install -g @angular/cli")
 os.system("npm i --save-dev @types/crypto-js")
+os.system("npm install --save-dev jsdoc")
 os.chdir(os.getcwd() + "/src/environments")
 env = open('./environment.ts', 'w')
 env.write("export const environment = {\n" + 
