@@ -6,5 +6,8 @@ import { Component, Input } from "@angular/core";
   styleUrls: ['./user.component.css']
 })
 export class UserComponent {
+  /**
+   * @type {string}
+   */
   @Input() userText!: string;
 }

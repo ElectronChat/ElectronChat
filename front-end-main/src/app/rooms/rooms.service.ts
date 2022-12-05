@@ -1,5 +1,4 @@
 import { Injectable, OnDestroy } from "@angular/core";
-//import 'crypto-js';
 import { AES , mode, pad, lib, enc, PBKDF2} from 'crypto-js';
 import { Socket } from "ngx-socket-io";
 import { map } from "rxjs/operators";
@@ -26,63 +25,53 @@ export class RoomsService {
 
   }
 
+  /**
+   * sets SocketIo connection with HOST and PORT environment variables
+   * queries only messages from the roomCode
+   */
   public setupSocket()
   {
-    console.log(this.host);
-    console.log(this.port);
     this.socket = io('http://' + this.host + ':' + this.port,
-    //this.socket = io('http://localhost:3000',
     {query: {roomCode: this.roomcode}});
   }
 
+  /**
+   * sets new room code
+   * @param room @type {string} new room code
+   */
   public setRoom(room: string){
     this.roomcode = room;
   }
 
+  /**
+   * sends new message from user to server via SocketIo after encryption
+   * @param message @type {string} message entered from user
+   */
   public sendMessage(message: string) {
-    // console.log("before encrypt");
-    // var encryptedM = AES.encrypt(message, this.roomcode);
-    // console.log("past encrypt");
-    // console.log(encryptedM);
-    // var d = AES.decrypt(encryptedM, this.roomcode);
-    // console.log(d.toString(enc.Utf8));
-    // this.socket.emit('chat message', enc.Hex.stringify(encryptedM.ciphertext));
     var encryptedM = encrypt(message, this.roomcode);
     this.socket.emit('chat message', encryptedM);
-    // console.log(encryptedM);
-    // console.log("past emit");
   }
 
+  /**
+   * listens to socket io for new messages which are then decrypted and set to this.newMessage
+   * @returns @type {BehaviorSubject<String>} observable string
+   */
   public getNewMessage = () => {
     this.socket.on('chat message', (message:any) => {
-      // console.log("past get");
-      // console.log(message);
-      // var hash = enc.Hex.parse(message['message']);
-      // console.log("hash");
-      // console.log(hash);
-      // var decryptedM = AES.decrypt(message['message'], this.roomcode);
-      // //var decryptedM = AES.decrypt(enc.Hex.stringify(hash), this.roomcode);
-      // message['message'] = AES.decrypt(message['message'], this.roomcode).toString();
-      // console.log("past decrypt");
-      // console.log(decryptedM);
-      // console.log(decryptedM.toString)
-      // console.log(message["message"]);
-      // console.log(message);
-      // console.log(decryptedM.toString(enc.Utf16));
-      // console.log(decryptedM.toString(enc.Hex));
-      // console.log(decryptedM.toString(enc.Utf8));
-      //console.log("past log");
       message['message'] = decrypt(message['message'], this.roomcode).toString(enc.Utf8);
       this.message$.next(message);
 
       this.newMessage = message;
-      //console.log(this.newMessage);
     });
 
 
     return this.message$.asObservable();
   };
 
+  /**
+   * listens for users from socket io
+   * @returns @type {BehaviorSubject<String>} user as observable
+   */
   public getNewUser = () => {
     this.socket.on('user_join', (user:string) => {
       this.user$.next(user);
@@ -90,6 +79,10 @@ export class RoomsService {
     return this.user$.asObservable();
   };
 
+  /**
+   * listens for a user disconnection from room
+   * @returns @type {BehaviorSubject<String>} userdisconnection as observable
+   */
   public getUserDisconnect = () => {
     this.socket.on('user_disconnect', (user:string) => {
       this.userDisconnect$.next(user);
@@ -97,18 +90,32 @@ export class RoomsService {
     return this.userDisconnect$.asObservable();
   }
 
+  /**
+   * emits disconnection to server when local user disconnections
+   */
   public emitDisconnection (){
     this.socket.emit('disconnected', this.socket.id);
     this.socket.disconnect();
-    console.log("disconnected");
   }
 
+  /**
+   *
+   * @returns this.rooms
+   */
   getRooms() { return [...this.rooms]; }
 
+  /**
+   *
+   * @returns @type {Subject<RoomCreateJoin[]>} roomsUpdated as observable
+   */
   getRoomUpdateListener() {
     return this.roomsUpdated.asObservable();
   }
 
+  /**
+   * Adds new room to roomsUpdated
+   * @param roomCode new room code
+   */
   createRoom(roomCode: string) {
     const post: RoomCreateJoin = {roomCode: roomCode};
     this.rooms.push(post);
@@ -116,7 +123,13 @@ export class RoomsService {
   }
 }
 
-// function to encrypt messages using a known key that will be used on the other side (symmetric key encryption)
+/**
+ * function to encrypt messages using a known key
+ * that will be used on the other side (symmetric key encryption)
+ * @param message @type {String} message to be encrypted
+ * @param pass @type {String} key for encryption
+ * @returns encrypted binary array of the message along with initial value and salting value
+ */
 function encrypt(message: string, pass: string)
 {
   // define some options for the encryption
@@ -134,7 +147,11 @@ function encrypt(message: string, pass: string)
   return encrypted_bin;
 }
 
-// function to decrypt encrypted message that are passed in using a known key
+/** function to decrypt encrypted message that are passed in using a known key
+ * @param encrypted binary array with initial value, encrypred message, and salting value
+ * @param key_org @type {String} key for decryption
+ * @returns @type {String} decrypted message
+ */
 function decrypt(encrypted: any, key_org: string)
 {
   var split_msg = encrypted.split(','); // split the attached values

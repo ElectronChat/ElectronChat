@@ -1,0 +1,13 @@
+RESEARCH INTO DOT ENV FOR ANGULAR
+https://plainenglish.io/blog/setup-dotenv-to-access-environment-variables-in-angular-9-f06c6ffb86c0
+https://dev.to/jdgamble555/angular-universal-env-variables-with-webpack-and-dotenv-3i6o
+
+DONT WASTE YOUR TIME WITH DOTENV FOR THE FRONT END
+
+Dot env is too complicated of s setup since these are static webpages and dotenv needs
+to be accessed at runtime.
+
+Instead, I used the port and ip selected with setup.py to create the environment variable files
+
+Then it is accessible for angular since its set at compile time
+
